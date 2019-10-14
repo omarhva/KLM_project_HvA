@@ -1,8 +1,10 @@
 <h2 id="availableEquipmentHeader">Available equipment </h2>
 
-
 <table class="table">
   <thead class="thead-dark">
+  <label>
+    <input class="searchEquipment" maxlength="6" [formControl]="searchField" placeholder="test">
+  </label>
   <tr>
     <th scope="col">Equipment Number</th>
     <th scope="col">Building</th>
@@ -14,18 +16,46 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let equipmentss of equipmentService.getEquipmentList()"
+  <tr *ngFor=" let equipmentss of equipmentService.getEquipmentList()"
       [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}">
 
-    <td *ngIf="equipmentss.userStatus == 'I'">{{equipmentss.equipmentNr}}</td>
-    <td *ngIf="equipmentss.userStatus == 'I'">{{equipmentss.building}}</td>
-    <td *ngIf="equipmentss.userStatus == 'I'">{{equipmentss.hangar}}</td>
-    <td *ngIf="equipmentss.userStatus == 'I'">{{equipmentss.department}}</td>
-    <td *ngIf="equipmentss.userStatus == 'I'">{{equipmentss.userStatus}}</td>
-    <td *ngIf="equipmentss.userStatus == 'I'"
-        [style.background-color]="equipmentService.color">{{equipmentss.code}}</td>
-    <td *ngIf="equipmentss.userStatus == 'I'">{{equipmentss.priority}}</td>
+    <td
+      *ngIf="equipmentss.userStatus == 'I'  && equipmentss.equipmentNr.toString().includes(searchField.value) && showTable">
+      {{equipmentss.equipmentNr}}
+    </td>
+
+    <td
+      *ngIf="equipmentss.userStatus == 'I' && equipmentss.equipmentNr.toString().includes(searchField.value) && showTable">
+      {{equipmentss.building}}
+    </td>
+
+    <td
+      *ngIf="equipmentss.userStatus == 'I'  && equipmentss.equipmentNr.toString().includes(searchField.value) && showTable">
+      {{equipmentss.hangar}}
+    </td>
+
+    <td
+      *ngIf="equipmentss.userStatus == 'I'  && equipmentss.equipmentNr.toString().includes(searchField.value) && showTable">
+      {{equipmentss.department}}
+    </td>
+
+    <td
+      *ngIf="equipmentss.userStatus == 'I'  && equipmentss.equipmentNr.toString().includes(searchField.value) && showTable">
+      {{equipmentss.userStatus}}
+    </td>
+
+    <td
+      *ngIf="equipmentss.userStatus == 'I' && equipmentss.equipmentNr.toString().includes(searchField.value) && showTable"
+      [style.background-color]="equipmentService.color">
+      {{equipmentss.code}}
+    </td>
+
+    <td
+      *ngIf="equipmentss.userStatus == 'I' && equipmentss.equipmentNr.toString().includes(searchField.value) && showTable">
+      {{equipmentss.priority}}
+    </td>
   </tr>
 
   </tbody>
 </table>
+

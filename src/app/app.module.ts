@@ -12,7 +12,8 @@ import {MaintenanceComponent} from './components/maintenance/maintenance.compone
 import {GeneralComponent} from './components/general/general.component';
 import {ErrorPageComponent} from "./components/mainpage/error-page/error-page.component";
 import {RouterModule} from "@angular/router";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+
 
 @NgModule({
   declarations: [
@@ -24,13 +25,15 @@ import {FormsModule} from "@angular/forms";
     MechanicComponent,
     MaintenanceComponent,
     GeneralComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+
   ],
   imports: [
     BrowserModule,
     RouterModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

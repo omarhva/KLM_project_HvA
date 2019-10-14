@@ -9,7 +9,7 @@ export class EquipmentService {
 
   public equipmentList: EquipmentModel[];
   public color: string = "";
-
+  public index: number;
   constructor() {
 
 
@@ -80,4 +80,5 @@ export class EquipmentService {
 
     }
   }
+
 }

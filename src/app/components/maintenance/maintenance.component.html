@@ -11,10 +11,11 @@
     <th scope="col">UserStatus</th>
     <th scope="col">Code</th>
     <th scope="col">Priority</th>
+    <th scope="col">Repaired</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let equipmentss of equipmentService.getEquipmentList()"
+  <tr *ngFor="let equipmentss of equipmentService.getEquipmentList() let i = index"
       [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}">
 
     <td *ngIf="equipmentss.userStatus != 'I'">{{equipmentss.equipmentNr}}</td>
@@ -25,6 +26,7 @@
     <td *ngIf="equipmentss.userStatus != 'I'"
         [style.background-color]="equipmentService.color">{{equipmentss.code}}</td>
     <td *ngIf="equipmentss.userStatus != 'I'">{{equipmentss.priority}}</td>
+    <button *ngIf="equipmentss.userStatus != 'I'" class="btn-dark" (click)="repaired(i)">Repaired</button>
 
   </tr>
   </tbody>
