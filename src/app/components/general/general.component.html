@@ -1,0 +1,30 @@
+<h2 id="generalHeader">General list of equipment</h2>
+
+
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Equipment Number</th>
+    <th scope="col">Building</th>
+    <th scope="col">Hangar</th>
+    <th scope="col">Department</th>
+    <th scope="col">UserStatus</th>
+    <th scope="col">Code</th>
+    <th scope="col">Priority</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let equipmentss of equipmentService.getEquipmentList()"
+      [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}">
+
+    <td>{{equipmentss.equipmentNr}}</td>
+    <td>{{equipmentss.building}}</td>
+    <td>{{equipmentss.hangar}}</td>
+    <td>{{equipmentss.department}}</td>
+    <td>{{equipmentss.userStatus}}</td>
+    <td [style.background-color]="equipmentService.color">{{equipmentss.code}}</td>
+    <td>{{equipmentss.priority}}</td>
+  </tr>
+
+  </tbody>
+</table>

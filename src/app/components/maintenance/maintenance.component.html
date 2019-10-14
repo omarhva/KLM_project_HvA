@@ -1,0 +1,33 @@
+<h2 id="repairListHeader">Repair list</h2>
+
+
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Equipment Number</th>
+    <th scope="col">Building</th>
+    <th scope="col">Hangar</th>
+    <th scope="col">Department</th>
+    <th scope="col">UserStatus</th>
+    <th scope="col">Code</th>
+    <th scope="col">Priority</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let equipmentss of equipmentService.getEquipmentList()"
+      [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}">
+
+    <td *ngIf="equipmentss.userStatus != 'I'">{{equipmentss.equipmentNr}}</td>
+    <td *ngIf="equipmentss.userStatus != 'I'">{{equipmentss.building}}</td>
+    <td *ngIf="equipmentss.userStatus != 'I'">{{equipmentss.hangar}}</td>
+    <td *ngIf="equipmentss.userStatus != 'I'">{{equipmentss.department}}</td>
+    <td *ngIf="equipmentss.userStatus != 'I'">{{equipmentss.userStatus}}</td>
+    <td *ngIf="equipmentss.userStatus != 'I'"
+        [style.background-color]="equipmentService.color">{{equipmentss.code}}</td>
+    <td *ngIf="equipmentss.userStatus != 'I'">{{equipmentss.priority}}</td>
+
+  </tr>
+  </tbody>
+</table>
+
+

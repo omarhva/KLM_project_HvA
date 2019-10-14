@@ -12,6 +12,7 @@ import {MaintenanceComponent} from './components/maintenance/maintenance.compone
 import {GeneralComponent} from './components/general/general.component';
 import {ErrorPageComponent} from "./components/mainpage/error-page/error-page.component";
 import {RouterModule} from "@angular/router";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {RouterModule} from "@angular/router";
   imports: [
     BrowserModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
