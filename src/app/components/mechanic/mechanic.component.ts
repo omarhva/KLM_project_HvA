@@ -28,9 +28,9 @@ export class MechanicComponent implements OnInit {
     this.searchField = new FormControl();
     this.searchField.valueChanges.subscribe(term => {
       for (let code of this.equipmentService.getEquipmentList()) {
-        if (!this.searchField.isEmpty && code.equipmentNr.toString().includes(this.searchField.value)) {
+        if (!this.searchField.isEmpty && code.objectDescription.includes(this.searchField.value)) {
           this.showTable = true;
-        } else if (this.searchField.value.isEmpty && !code.equipmentNr.toString().includes(this.searchField.value)) {
+        } else if (this.searchField.value.isEmpty && !code.objectDescription.includes(this.searchField.value)) {
           this.showTable = false
         }
       }

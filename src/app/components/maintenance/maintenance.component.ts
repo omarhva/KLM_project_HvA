@@ -22,8 +22,8 @@ export class MaintenanceComponent implements OnInit {
   }
 
   repaired(index: number) {
+    alert("The equipment is repaired");
     this.equipmentService.getEquipmentList().splice(index, 1);
-    console.log(index);
   }
 
 }

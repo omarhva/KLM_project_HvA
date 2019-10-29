@@ -4,49 +4,28 @@
 <table class="table">
   <thead class="thead-dark">
   <label>
-    <input class="searchEquipment" [formControl]="searchField" placeholder="test">
+    <input class="searchEquipment" [formControl]="searchField" placeholder="equipment name">
   </label>
   <tr>
     <th scope="col">Equipment Number</th>
-    <th scope="col">Building</th>
-    <th scope="col">Hangar</th>
-    <th scope="col">Department</th>
-    <th scope="col">UserStatus</th>
-    <th scope="col">Code</th>
-    <th scope="col">Priority</th>
+    <th scope="col">Location</th>
+
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let equipmentss of equipmentService.getEquipmentList()"
       [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}">
-    <td *ngIf="equipmentss.equipmentNr.toString().includes(searchField.value) && showTable">
-      {{equipmentss.equipmentNr}}
+
+    <td
+      *ngIf="equipmentss.objectDescription.includes(searchField.value) && showTable">
+      {{equipmentss.objectDescription}}
     </td>
 
-    <td *ngIf="equipmentss.equipmentNr.toString().includes(searchField.value) && showTable">
-      {{equipmentss.building}}
+    <td [style.background-color]="equipmentService.color"
+        *ngIf=" equipmentss.objectDescription.includes(searchField.value) && showTable">
+      {{equipmentss.building + equipmentss.hangar + " " + equipmentss.department}}
     </td>
 
-    <td *ngIf="equipmentss.equipmentNr.toString().includes(searchField.value) && showTable">
-      {{equipmentss.hangar}}
-    </td>
-
-    <td *ngIf="equipmentss.equipmentNr.toString().includes(searchField.value) && showTable">
-      {{equipmentss.department}}
-    </td>
-
-    <td *ngIf="equipmentss.equipmentNr.toString().includes(searchField.value) && showTable">
-      {{equipmentss.userStatus}}
-    </td>
-
-    <td *ngIf="equipmentss.equipmentNr.toString().includes(searchField.value) && showTable"
-        [style.background-color]="equipmentService.color">
-      {{equipmentss.code}}
-    </td>
-
-    <td *ngIf="equipmentss.equipmentNr.toString().includes(searchField.value) && showTable">
-      {{equipmentss.priority}}
-    </td>
   </tr>
 
   </tbody>
