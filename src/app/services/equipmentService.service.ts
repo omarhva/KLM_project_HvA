@@ -65,12 +65,6 @@ export class EquipmentService {
       case "PM1":
         this.color = "orange";
         break;
-      case "PM2A":
-        this.color = "green";
-        break;
-      case "PM2":
-        this.color = "green";
-        break;
       case "PM1B":
         this.color = "red";
         break;
