@@ -21,7 +21,7 @@ export class EquipmentService {
         "PM2", null, "LPT", "410", "10"),
 
       new EquipmentModel(107652, "BUILDUP STAND LPT -80C2", "I",
-        "PM2A", null, "LPT", "410", "10"),
+        "PM2A", null, "Core", "410", "10"),
 
       new EquipmentModel(111283, "BUILDUP STAND LPT -80C2", "I",
         "PM2A", null, "LPT", "410", "10"),
@@ -36,7 +36,7 @@ export class EquipmentService {
         "PM2A", null, "LPT", "410", "10"),
 
       new EquipmentModel(122076, "BUILDUP STAND LPT -80E", "I",
-        "PM2A", null, "LPT", "410", "10"),
+        "PM2A", null, "HPT", "410", "10"),
 
       new EquipmentModel(117919, "FIXTURE LIFT LPT DISK STG5", "I T",
         "PM1", 2, "LPT", "410", "10"),

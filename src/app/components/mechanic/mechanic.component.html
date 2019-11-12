@@ -1,31 +1,36 @@
-  <div class="row">
-    <div class="col-md-4">
-      <h2>Choose a department</h2>
-      <ul class="motortypes">
-        <li *ngFor="let dept of listDepartments"
-            [class.selected]="dept === selectedDept"
-            (click)="onSelect(dept)">
-          {{dept.name}}
-        </li>
-      </ul>
+<div class="row">
+  <div class="col-md-4">
+    <h2>Choose a department</h2>
+    <ul class="motortypes">
+      <li *ngFor="let dept of listDepartments"
+          [class.selected]="dept === selectedDept"
+          (click)="onSelect(dept)">
+        {{dept.name}}
+      </li>
+    </ul>
 
-    </div>
+  </div>
 
-    <div *ngIf="selectedDept">
-      <div class="col-md-20">
-        <div *ngIf="selectedDept">
-          <h2>Choose a motortype</h2>
-          <ul class="motortypes">
-            <li *ngFor="let motorT of listMotortypes"
-                [class.selected]="motorT === selectedMoto"
-                (click)="onSelectMotor(motorT)">
-              {{motorT.name}}
-            </li>
-          </ul>
-        </div>
+  <div *ngIf="selectedDept">
+    <div class="col-md-20">
+      <div *ngIf="selectedDept">
+        <h2>Choose a motortype</h2>
+        <ul class="motortypes">
+          <li *ngFor="let motorT of listMotortypes"
+              [class.selected]="motorT === selectedMoto"
+              (click)="onSelectMotor(motorT)">
+            {{motorT.name}}
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <p>Chosen Department: {{selectedDept.name}}</p>
+        <p>Chosen Motortype: {{selectedMoto.name}}</p>
       </div>
     </div>
   </div>
+</div>
 
 <!--<div class="row">-->
 <!--  <div class="col-md-4">-->
@@ -45,36 +50,36 @@
 <!--  </div>-->
 
 <!--</div>-->
-
 <div *ngIf="selectedMoto">
-      <table class="table">
-        <thead class="thead-dark">
-        <label>
-          <input class="searchEquipment" maxlength="6" [formControl]="searchField" placeholder="equipment name ">
-        </label>
-        <tr>
-          <th scope="col">Equipment Name</th>
-          <th scope="col">Location</th>
+
+  <table class="table">
+    <thead class="thead-dark">
+    <label>
+      <input class="searchEquipment" maxlength="6" [formControl]="searchField" placeholder="equipment name">
+    </label>
+    <tr>
+      <th scope="col">Equipment Name</th>
+      <th scope="col">Location</th>
 
 
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor=" let equipmentss of equipmentService.getEquipmentList()"
-            [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}">
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor=" let equipmentss of equipmentService.getEquipmentList()"
+        [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}">
 
-          <td
-            *ngIf="equipmentss.userStatus == 'I'  && equipmentss.objectDescription.includes(searchField.value) && showTable">
-            {{equipmentss.objectDescription}}
-          </td>
+      <td
+        *ngIf="equipmentss.userStatus == 'I'  && equipmentss.department.includes(this.selectedDept.name) && showTable">
+        {{equipmentss.objectDescription}}
+      </td>
 
-          <td
-            *ngIf="equipmentss.userStatus == 'I' && equipmentss.objectDescription.includes(searchField.value) && showTable">
-            {{equipmentss.building + equipmentss.hangar + " " + equipmentss.department}}
-          </td>
-        </tr>
+      <td
+        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department.includes(this.selectedDept.name) && showTable">
+        {{equipmentss.building + equipmentss.hangar + " " + equipmentss.department}}
+      </td>
+    </tr>
 
-        </tbody>
-      </table>
+    </tbody>
+  </table>
 
 </div>
