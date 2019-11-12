@@ -17,7 +17,8 @@ import {Motortypes} from "./mock/mock-motortype";
 export class MechanicComponent implements OnInit {
 
   public equipmentList: EquipmentModel[];
-  public searchField;
+  public searchFieldEquipment;
+  public searchFieldLocation;
   public showTable: Boolean;
 
   listDepartments = Departments;
@@ -34,15 +35,18 @@ export class MechanicComponent implements OnInit {
 
   ngOnInit() {
     this.showTable = true;
-    this.searchField = new FormControl();
-    this.searchField.valueChanges.subscribe(term => {
+    this.searchFieldEquipment = new FormControl();
+    this.searchFieldLocation = new FormControl();
+    this.searchFieldEquipment.valueChanges.subscribe(term => {
       for (let code of this.equipmentService.getEquipmentList()) {
-        // if (code.objectDescription.includes(this.selectedDept.name)) {
-        //   this.showTable = true;
-        if (!code.department.includes(this.selectedDept.name)) {
-          this.showTable = false;
+          if (!this.searchFieldEquipment.isEmpty && code.objectDescription.includes(this.searchFieldEquipment.value) &&
+            code.department == this.selectedDept.name) {
+            this.showTable = false;
+          } else if (!code.objectDescription.includes(this.searchFieldEquipment.value) ) {
+            this.showTable = true;
+          }
+
         }
-      }
     });
   }
 
@@ -56,4 +60,10 @@ export class MechanicComponent implements OnInit {
     this.selectedMoto = motorT;
     console.log("Value motortype: " + motorT.name);
   }
+
+
+  checkInputEquipment(value:string){
+
+  }
+
 }

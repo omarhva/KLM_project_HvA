@@ -32,36 +32,20 @@
   </div>
 </div>
 
-<!--<div class="row">-->
-<!--  <div class="col-md-4">-->
-<!--    <table class="departmentH">-->
-<!--      <thead>-->
-<!--      <tr>-->
-<!--        <th>Departments</th>-->
-<!--      </tr>-->
-<!--      </thead>-->
-
-<!--      <tbody class="listDepartments">-->
-<!--      <tr *ngFor="let deptMock of list">-->
-<!--        <td>{{deptMock.name}}</td>-->
-<!--      </tr>-->
-<!--      </tbody>-->
-<!--    </table>-->
-<!--  </div>-->
-
-<!--</div>-->
 <div *ngIf="selectedMoto">
 
   <table class="table">
     <thead class="thead-dark">
     <label>
-      <input class="searchEquipment" maxlength="6" [formControl]="searchField" placeholder="equipment name">
+      <input class="searchEquipment" [formControl]="searchFieldEquipment" placeholder="equipment description">
+    </label>
+
+    <label>
+      <input id="searchLocation" [formControl]="searchFieldLocation" placeholder="location">
     </label>
     <tr>
-      <th scope="col">Equipment Name</th>
+      <th scope="col">Equipment description</th>
       <th scope="col">Location</th>
-
-
     </tr>
     </thead>
     <tbody>
@@ -69,12 +53,14 @@
         [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}">
 
       <td
-        *ngIf="equipmentss.userStatus == 'I'  && equipmentss.department.includes(this.selectedDept.name) && showTable">
+        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name  && showTable == true
+          &&  equipmentss.objectDescription.includes(searchFieldEquipment.value)">
         {{equipmentss.objectDescription}}
       </td>
 
       <td
-        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department.includes(this.selectedDept.name) && showTable">
+        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && showTable == true &&
+         equipmentss.objectDescription.includes(searchFieldEquipment.value)">
         {{equipmentss.building + equipmentss.hangar + " " + equipmentss.department}}
       </td>
     </tr>
