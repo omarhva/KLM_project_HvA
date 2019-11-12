@@ -69,7 +69,6 @@ export class EquipmentService {
         this.color = "red";
         break;
       default:
-        console.log("default");
         break;
 
     }

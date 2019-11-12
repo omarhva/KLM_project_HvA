@@ -1,32 +1,80 @@
-<h2 id="availableEquipmentHeader">Available equipment </h2>
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Choose a department</h2>
+      <ul class="motortypes">
+        <li *ngFor="let dept of listDepartments"
+            [class.selected]="dept === selectedDept"
+            (click)="onSelect(dept)">
+          {{dept.name}}
+        </li>
+      </ul>
 
-<table class="table">
-  <thead class="thead-dark">
-  <label>
-    <input class="searchEquipment" maxlength="6" [formControl]="searchField" placeholder="equipment name ">
-  </label>
-  <tr>
-    <th scope="col">Equipment Name</th>
-    <th scope="col">Location</th>
+    </div>
+
+    <div *ngIf="selectedDept">
+      <div class="col-md-20">
+        <div *ngIf="selectedDept">
+          <h2>Choose a motortype</h2>
+          <ul class="motortypes">
+            <li *ngFor="let motorT of listMotortypes"
+                [class.selected]="motorT === selectedMoto"
+                (click)="onSelectMotor(motorT)">
+              {{motorT.name}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--<div class="row">-->
+<!--  <div class="col-md-4">-->
+<!--    <table class="departmentH">-->
+<!--      <thead>-->
+<!--      <tr>-->
+<!--        <th>Departments</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+
+<!--      <tbody class="listDepartments">-->
+<!--      <tr *ngFor="let deptMock of list">-->
+<!--        <td>{{deptMock.name}}</td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </div>-->
+
+<!--</div>-->
+
+<div *ngIf="selectedMoto">
+      <table class="table">
+        <thead class="thead-dark">
+        <label>
+          <input class="searchEquipment" maxlength="6" [formControl]="searchField" placeholder="equipment name ">
+        </label>
+        <tr>
+          <th scope="col">Equipment Name</th>
+          <th scope="col">Location</th>
 
 
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor=" let equipmentss of equipmentService.getEquipmentList()"
-      [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}">
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor=" let equipmentss of equipmentService.getEquipmentList()"
+            [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}">
 
-    <td
-      *ngIf="equipmentss.userStatus == 'I'  && equipmentss.objectDescription.includes(searchField.value) && showTable">
-      {{equipmentss.objectDescription}}
-    </td>
+          <td
+            *ngIf="equipmentss.userStatus == 'I'  && equipmentss.objectDescription.includes(searchField.value) && showTable">
+            {{equipmentss.objectDescription}}
+          </td>
 
-    <td
-      *ngIf="equipmentss.userStatus == 'I' && equipmentss.objectDescription.includes(searchField.value) && showTable">
-      {{equipmentss.building + equipmentss.hangar + " " + equipmentss.department}}
-    </td>
-  </tr>
+          <td
+            *ngIf="equipmentss.userStatus == 'I' && equipmentss.objectDescription.includes(searchField.value) && showTable">
+            {{equipmentss.building + equipmentss.hangar + " " + equipmentss.department}}
+          </td>
+        </tr>
 
-  </tbody>
-</table>
+        </tbody>
+      </table>
 
+</div>

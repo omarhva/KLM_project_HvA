@@ -1,12 +1,81 @@
-#availableEquipmentHeader {
-  text-align: center;
-  margin-top: 1%;
-  margin-bottom: 1%;
-}
-
 .searchEquipment {
   position: relative;
   float: right;
   left: 866%;
   border-color: black;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.motortypes {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  width: 50%;
+  text-align: center;
+}
+
+.motortypes li {
+  cursor: pointer;
+  position: relative;
+  background-color: gray;
+  margin: 3%;
+  padding: 2%;
+  height: 5%;
+  border-radius: 10px;
+}
+
+.motortypes li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+
+.motortypes li.selected {
+  background-color: darkblue;
+  color: white;
+}
+
+.motortypes li.selected:hover {
+  background-color: lightblue;
+  color: white;
+}
+
+.departments {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  width: 50%;
+  text-align: center;
+}
+
+.departments li {
+  cursor: pointer;
+  position: relative;
+  background-color: gray;
+  margin: 3%;
+  padding: 2%;
+  height: 5%;
+  border-radius: 10px;
+}
+
+.departments li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+
+.departments li.selected {
+  background-color: darkblue;
+  color: white;
+}
+
+.departments li.selected:hover {
+  background-color: lightblue;
+  color: white;
 }
