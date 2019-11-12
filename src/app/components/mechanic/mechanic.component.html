@@ -53,14 +53,12 @@
         [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}">
 
       <td
-        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name  && showTable == true
-          &&  equipmentss.objectDescription.includes(searchFieldEquipment.value)">
+        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name  && showTable">
         {{equipmentss.objectDescription}}
       </td>
 
       <td
-        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && showTable == true &&
-         equipmentss.objectDescription.includes(searchFieldEquipment.value)">
+        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && showTable">
         {{equipmentss.building + equipmentss.hangar + " " + equipmentss.department}}
       </td>
     </tr>
