@@ -10,8 +10,8 @@
 </div>
 
 <div *ngIf="selectedDept">
-<h2>Choose a motortype</h2>
-<div class="wrapbox2">
+  <h2>Choose a motortype</h2>
+  <div class="wrapbox2">
 
     <div *ngIf="selectedDept">
       <ul class="motortypes">
@@ -29,27 +29,35 @@
 
   <table class="table">
     <thead class="thead-dark">
-    <label>
-      <input class="searchEquipment" [formControl]="searchFieldEquipment"
-             (change)="filterOnEquipmentDescription(searchFieldEquipment.value)" placeholder="equipment description">
-    </label>
+    <div class="wrapsearchfields">
+      <label>
+        <input class="searchEquipment" [formControl]="searchFieldEquipment"
+               (change)="filterOnEquipmentDescription(searchFieldEquipment.value)" placeholder="equipment description">
+      </label>
 
-    <label>
-      <input id="searchLocation" [formControl]="searchFieldLocation" placeholder="location">
-    </label>
+      <label>
+        <input id="searchLocation" [formControl]="searchFieldLocation" placeholder="location">
+      </label>
+    </div>
     <tr>
-      <th scope="col">Equipment description</th>
-      <th scope="col">Location</th>
+      <th style="width: 15%">Equipment number</th>
+      <th style="width: 70%">Equipment description</th>
+      <th style="width: 15%">Location</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor=" let equipmentss of equipmentService.getEquipmentList()"
         [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}">
+      <td
+        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motortype == selectedMoto.name && equipmentss.filterEquipDescr">
+        {{equipmentss.equipmentNr}}
+      </td>
 
       <td
         *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motortype == selectedMoto.name && equipmentss.filterEquipDescr">
         {{equipmentss.objectDescription}}
       </td>
+
 
       <td
         *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motortype == selectedMoto.name && equipmentss.filterEquipDescr">

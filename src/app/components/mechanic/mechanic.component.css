@@ -7,7 +7,10 @@
   position: relative;
   border-color: black;
   margin-left: 3%;
-  left: 653%;
+}
+
+.wrapsearchfields{
+  display: flex;
 }
 
 .motortypes {
@@ -58,3 +61,4 @@
 h2 {
   text-align: center;
 }
+
