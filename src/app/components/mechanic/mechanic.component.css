@@ -7,6 +7,7 @@
   position: relative;
   border-color: black;
   margin-left: 3%;
+
 }
 
 .wrapsearchfields{
@@ -18,12 +19,13 @@
   list-style-type: none;
   width: 100%;
   text-align: center;
-
+  font-size: 22px;
 }
 
 .motortypes li {
   cursor: pointer;
   display: inline;
+  border-radius: 4px;
 
   background-color: rgb(79,165,219);
   margin: 1%;
