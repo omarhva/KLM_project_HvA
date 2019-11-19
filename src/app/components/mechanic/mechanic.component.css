@@ -9,8 +9,12 @@
   margin-left: 3%;
 }
 
-.wrapsearchfields{
+.wrapsearchfields {
   display: flex;
+}
+
+.buttonSearch{
+  background-color: rgb(215,128,68);
 }
 
 .motortypes {

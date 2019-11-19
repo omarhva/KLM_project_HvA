@@ -10,6 +10,8 @@ export class EquipmentModel {
   public hangar: string;
   public motortype: string;
   public filterEquipDescr: boolean;
+  public filterEquipmentNr: Boolean;
+  public filterLocation: Boolean;
 
 
   constructor(equipmentNr: number, objectDescription: string, userStatus: string, code: string, priority: number,
@@ -24,5 +26,7 @@ export class EquipmentModel {
     this.hangar = hangar;
     this.motortype = motortype;
     this.filterEquipDescr = true;
+    this.filterEquipmentNr = true;
+    this.filterLocation = true;
   }
 }

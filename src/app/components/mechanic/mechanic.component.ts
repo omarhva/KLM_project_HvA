@@ -19,8 +19,11 @@ export class MechanicComponent implements OnInit {
   public equipmentList: EquipmentModel[];
   public searchFieldEquipment;
   public searchFieldLocation;
+  public searchFieldEquipmentNr;
   public showTable: Boolean;
   public filterDescription: Boolean;
+  public filterEquipmentNr: Boolean;
+  public filterLocation: Boolean;
 
   listDepartments = Departments;
   selectedDept: Dept;
@@ -33,30 +36,15 @@ export class MechanicComponent implements OnInit {
   constructor(private equipmentService: EquipmentService) {
     this.equipmentList = this.equipmentService.getEquipmentList();
     this.filterDescription = true;
+    this.filterEquipmentNr = true;
+    this.filterLocation = true;
   }
 
   ngOnInit() {
-
     this.showTable = true;
     this.searchFieldEquipment = new FormControl();
     this.searchFieldLocation = new FormControl();
-    // this.searchFieldEquipment.valueChanges.subscribe(term => {
-    //   for (let code of this.equipmentService.getEquipmentList()) {
-
-    //
-    //     if (this.searchFieldEquipment.value == "") {
-    //       this.showTable = true;
-    //     }
-    //     if (this.searchFieldEquipment.value != null && code.objectDescription.includes(this.searchFieldEquipment.value) &&
-    //       code.department == this.selectedDept.name && code.motortype == this.selectedMoto.name) {
-    //       this.showTable = true;
-    //     } else if (!code.objectDescription.includes(this.searchFieldEquipment.value)) {
-    //       this.showTable = false;
-    //     }
-    //
-    //
-    //   }
-    // });
+    this.searchFieldEquipmentNr= new FormControl();
   }
 
 
@@ -83,6 +71,34 @@ export class MechanicComponent implements OnInit {
         x.filterEquipDescr = true;
         console.log(x.objectDescription.valueOf());
         console.log(equip);
+      }
+    }
+  }
+
+  filterOnEquipmentLocation(equip: string) {
+    for (let x of this.equipmentService.getEquipmentList()) {
+
+      if (!x.hangar.includes(equip)) {
+        x.filterLocation = false;
+      }
+
+      if (x.hangar.includes(equip)) {
+        x.filterLocation = true;
+
+      }
+    }
+  }
+
+  filterOnEquipmentNr(equip: string) {
+    for (let x of this.equipmentService.getEquipmentList()) {
+
+      if (!x.equipmentNr.toString().includes(equip)) {
+        x.filterEquipmentNr = false;
+      }
+
+      if (x.equipmentNr.toString().includes(equip)) {
+        x.filterEquipmentNr = true;
+
       }
     }
   }

@@ -30,14 +30,23 @@
   <table class="table">
     <thead class="thead-dark">
     <div class="wrapsearchfields">
+
+      <label>
+        <input class="searchEquipmentNr" [formControl]="searchFieldEquipmentNr"
+               (change)="filterOnEquipmentNr(searchFieldEquipmentNr.value)" placeholder="equipment number">
+      </label>
+      <button class="buttonSearch" (click)="filterOnEquipmentNr(searchFieldEquipmentNr.value)">Search</button>
+
       <label>
         <input class="searchEquipment" [formControl]="searchFieldEquipment"
                (change)="filterOnEquipmentDescription(searchFieldEquipment.value)" placeholder="equipment description">
       </label>
+      <button class="buttonSearch" (click)="filterOnEquipmentDescription(searchFieldEquipment.value)">Search</button>
 
       <label>
         <input id="searchLocation" [formControl]="searchFieldLocation" placeholder="location">
       </label>
+      <button class="buttonSearch" (click)="filterOnEquipmentLocation(searchFieldLocation.value)">Search</button>
     </div>
     <tr>
       <th style="width: 15%">Equipment number</th>
