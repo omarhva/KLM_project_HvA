@@ -21,7 +21,7 @@ export class MechanicComponent implements OnInit {
   public searchFieldEquipment;
   public searchFieldLocation;
   public showTable: Boolean;
-  public notInclude: Boolean;
+  public filterDescription: Boolean;
 
   listDepartments = Departments;
   selectedDept: Dept;
@@ -33,6 +33,7 @@ export class MechanicComponent implements OnInit {
 
   constructor(private equipmentService: EquipmentService) {
     this.equipmentList = this.equipmentService.getEquipmentList();
+    this.filterDescription = true;
   }
 
   ngOnInit() {
@@ -44,23 +45,18 @@ export class MechanicComponent implements OnInit {
 
         if (this.searchFieldEquipment.value == ""){
           this.showTable = true;
-          this.notInclude = false;
         }
           if (this.searchFieldEquipment.value != null && code.objectDescription.includes(this.searchFieldEquipment.value) &&
             code.department == this.selectedDept.name) {
             this.showTable = true;
-            this.notInclude = false;
           } else if (!code.objectDescription.includes(this.searchFieldEquipment.value)) {
             this.showTable = false;
-            this.notInclude = false;
           }
 
 
 
 
         }
-      console.log(this.showTable);
-      console.log("not include" + this.notInclude);
     });
   }
 
@@ -75,4 +71,25 @@ export class MechanicComponent implements OnInit {
     console.log("Value motortype: " + motorT.name);
   }
 
+
+
+  filterOnEquipmentDescription( equip : string){
+    for (let x of this.equipmentService.getEquipmentList()){
+
+      if (!x.objectDescription.includes(equip)){
+        x.filterEquipDescr = false;
+      }
+
+      if (x.objectDescription.includes(equip)) {
+        x.filterEquipDescr = true;
+        console.log(x.objectDescription.valueOf());
+        console.log(equip);
+      }
+
+
+
+
+
+    }
+  }
 }
