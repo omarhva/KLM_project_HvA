@@ -32,7 +32,7 @@
     <div class="wrapsearchfields">
 
       <label>
-        <input class="searchEquipmentNr" [formControl]="searchFieldEquipmentNr"
+        <input id="searchEquipmentNr" [formControl]="searchFieldEquipmentNr"
                (change)="filterOnEquipmentNr(searchFieldEquipmentNr.value)" placeholder="equipment number">
       </label>
       <button class="buttonSearch" (click)="filterOnEquipmentNr(searchFieldEquipmentNr.value)">Search</button>
@@ -58,18 +58,21 @@
     <tr *ngFor=" let equipmentss of equipmentService.getEquipmentList()"
         [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}">
       <td
-        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motortype == selectedMoto.name && equipmentss.filterEquipDescr">
+        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motortype == selectedMoto.name
+        && equipmentss.filterEquipDescr && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
         {{equipmentss.equipmentNr}}
       </td>
 
       <td
-        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motortype == selectedMoto.name && equipmentss.filterEquipDescr">
+        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motortype == selectedMoto.name
+        && equipmentss.filterEquipDescr && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
         {{equipmentss.objectDescription}}
       </td>
 
 
       <td
-        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motortype == selectedMoto.name && equipmentss.filterEquipDescr">
+        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motortype == selectedMoto.name
+        && equipmentss.filterEquipDescr && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
         {{equipmentss.building + equipmentss.hangar + " " + equipmentss.department}}
       </td>
     </tr>

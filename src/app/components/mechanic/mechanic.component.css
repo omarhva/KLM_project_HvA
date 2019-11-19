@@ -10,6 +10,13 @@
 
 }
 
+#searchEquipmentNr {
+  position: relative;
+  border-color: black;
+  margin-left: 3%;
+
+}
+
 .wrapsearchfields {
   display: flex;
 }

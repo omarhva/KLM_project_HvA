@@ -62,7 +62,6 @@ export class MechanicComponent implements OnInit {
 //Filter on equipment description on enter. -> Check HTML mechanic.component.html = (change).
   filterOnEquipmentDescription(equip: string) {
     for (let x of this.equipmentService.getEquipmentList()) {
-
       if (!x.objectDescription.includes(equip)) {
         x.filterEquipDescr = false;
       }
@@ -74,7 +73,7 @@ export class MechanicComponent implements OnInit {
       }
     }
   }
-
+// Filter on equipment location on enter
   filterOnEquipmentLocation(equip: string) {
     for (let x of this.equipmentService.getEquipmentList()) {
 
@@ -89,9 +88,10 @@ export class MechanicComponent implements OnInit {
     }
   }
 
+  // Filter on equipmentNr on enter
   filterOnEquipmentNr(equip: string) {
-    for (let x of this.equipmentService.getEquipmentList()) {
 
+    for (let x of this.equipmentService.getEquipmentList()) {
       if (!x.equipmentNr.toString().includes(equip)) {
         x.filterEquipmentNr = false;
       }
