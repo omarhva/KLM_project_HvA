@@ -7,7 +7,6 @@ import {Departments} from "./mock/mock-departments";
 import {Dept} from "./mock/department";
 import {MotorT} from "./mock/motortype";
 import {Motortypes} from "./mock/mock-motortype";
-import {not} from "rxjs/internal-compatibility";
 
 @Component({
   selector: 'app-mechanic',
@@ -37,27 +36,27 @@ export class MechanicComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.showTable = true;
     this.searchFieldEquipment = new FormControl();
     this.searchFieldLocation = new FormControl();
-    this.searchFieldEquipment.valueChanges.subscribe(term => {
-      for (let code of this.equipmentService.getEquipmentList()) {
+    // this.searchFieldEquipment.valueChanges.subscribe(term => {
+    //   for (let code of this.equipmentService.getEquipmentList()) {
 
-        if (this.searchFieldEquipment.value == ""){
-          this.showTable = true;
-        }
-          if (this.searchFieldEquipment.value != null && code.objectDescription.includes(this.searchFieldEquipment.value) &&
-            code.department == this.selectedDept.name) {
-            this.showTable = true;
-          } else if (!code.objectDescription.includes(this.searchFieldEquipment.value)) {
-            this.showTable = false;
-          }
-
-
-
-
-        }
-    });
+    //
+    //     if (this.searchFieldEquipment.value == "") {
+    //       this.showTable = true;
+    //     }
+    //     if (this.searchFieldEquipment.value != null && code.objectDescription.includes(this.searchFieldEquipment.value) &&
+    //       code.department == this.selectedDept.name && code.motortype == this.selectedMoto.name) {
+    //       this.showTable = true;
+    //     } else if (!code.objectDescription.includes(this.searchFieldEquipment.value)) {
+    //       this.showTable = false;
+    //     }
+    //
+    //
+    //   }
+    // });
   }
 
 
@@ -72,11 +71,11 @@ export class MechanicComponent implements OnInit {
   }
 
 
+//Filter on equipment description on enter. -> Check HTML mechanic.component.html = (change).
+  filterOnEquipmentDescription(equip: string) {
+    for (let x of this.equipmentService.getEquipmentList()) {
 
-  filterOnEquipmentDescription( equip : string){
-    for (let x of this.equipmentService.getEquipmentList()){
-
-      if (!x.objectDescription.includes(equip)){
+      if (!x.objectDescription.includes(equip)) {
         x.filterEquipDescr = false;
       }
 
@@ -85,11 +84,6 @@ export class MechanicComponent implements OnInit {
         console.log(x.objectDescription.valueOf());
         console.log(equip);
       }
-
-
-
-
-
     }
   }
 }

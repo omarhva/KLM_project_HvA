@@ -1,6 +1,7 @@
 import { Dept } from './department';
 
 export const Departments: Dept[] = [
+  { name: 'Motorlijn'},
   { name: 'Fan' },
   { name: 'LPC' },
   { name: 'Core' },
@@ -9,5 +10,6 @@ export const Departments: Dept[] = [
   { name: 'CRF' },
   { name: 'HPT' },
   { name: 'LPT' }
+
 ];
 

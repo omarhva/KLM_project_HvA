@@ -8,11 +8,12 @@ export class EquipmentModel {
   public department: string;
   public building: string;
   public hangar: string;
+  public motortype: string;
   public filterEquipDescr: boolean;
 
 
   constructor(equipmentNr: number, objectDescription: string, userStatus: string, code: string, priority: number,
-              department: string, building: string, hangar: string) {
+              department: string, building: string, hangar: string, motortype: string) {
     this.equipmentNr = equipmentNr;
     this.objectDescription = objectDescription;
     this.userStatus = userStatus;
@@ -21,6 +22,7 @@ export class EquipmentModel {
     this.department = department;
     this.building = building;
     this.hangar = hangar;
+    this.motortype = motortype;
     this.filterEquipDescr = true;
   }
 }

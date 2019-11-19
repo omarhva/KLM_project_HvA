@@ -1,33 +1,26 @@
-<div class="row">
-  <div class="col-md-4">
-    <h2>Choose a department</h2>
-    <ul class="motortypes">
-      <li *ngFor="let dept of listDepartments"
-          [class.selected]="dept === selectedDept"
-          (click)="onSelect(dept)">
-        {{dept.name}}
-      </li>
-    </ul>
+<h2>Choose a department</h2>
+<div class="wrapbox">
+  <ul class="motortypes">
+    <li *ngFor="let dept of listDepartments"
+        [class.selected]="dept === selectedDept"
+        (click)="onSelect(dept)">
+      {{dept.name}}
+    </li>
+  </ul>
+</div>
 
-  </div>
+<div *ngIf="selectedDept">
+<h2>Choose a motortype</h2>
+<div class="wrapbox2">
 
-  <div *ngIf="selectedDept">
-    <div class="col-md-20">
-      <div *ngIf="selectedDept">
-        <h2>Choose a motortype</h2>
-        <ul class="motortypes">
-          <li *ngFor="let motorT of listMotortypes"
-              [class.selected]="motorT === selectedMoto"
-              (click)="onSelectMotor(motorT)">
-            {{motorT.name}}
-          </li>
-        </ul>
-      </div>
-
-      <div>
-        <p>Chosen Department: {{selectedDept.name}}</p>
-        <p>Chosen Motortype: {{selectedMoto.name}}</p>
-      </div>
+    <div *ngIf="selectedDept">
+      <ul class="motortypes">
+        <li *ngFor="let motorT of listMotortypes"
+            [class.selected]="motorT === selectedMoto"
+            (click)="onSelectMotor(motorT)">
+          {{motorT.name}}
+        </li>
+      </ul>
     </div>
   </div>
 </div>
@@ -37,7 +30,8 @@
   <table class="table">
     <thead class="thead-dark">
     <label>
-      <input class="searchEquipment" [formControl]="searchFieldEquipment" (change)="filterOnEquipmentDescription(searchFieldEquipment.value)" placeholder="equipment description">
+      <input class="searchEquipment" [formControl]="searchFieldEquipment"
+             (change)="filterOnEquipmentDescription(searchFieldEquipment.value)" placeholder="equipment description">
     </label>
 
     <label>
@@ -53,12 +47,12 @@
         [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}">
 
       <td
-        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.filterEquipDescr">
+        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motortype == selectedMoto.name && equipmentss.filterEquipDescr">
         {{equipmentss.objectDescription}}
       </td>
 
       <td
-        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.filterEquipDescr">
+        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motortype == selectedMoto.name && equipmentss.filterEquipDescr">
         {{equipmentss.building + equipmentss.hangar + " " + equipmentss.department}}
       </td>
     </tr>
