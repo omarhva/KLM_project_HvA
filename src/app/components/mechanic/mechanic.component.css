@@ -1,12 +1,12 @@
 .searchEquipment {
   border-color: black;
-  margin-left: 3%;
+  margin-left: 108%;
 }
 
 #searchLocation {
-  position: relative;
+  position: absolute;
   border-color: black;
-  margin-left: 3%;
+  right: 4%;
 
 }
 
@@ -15,6 +15,23 @@
   border-color: black;
   margin-left: 3%;
 
+}
+
+#buttonEquipment{
+  position: absolute;
+  margin-left: 32%;
+
+}
+
+#buttonEquipmentNr{
+  position: absolute;
+  margin-left:11%;
+
+}
+
+#buttonLocation{
+  position: absolute;
+  right: 0;
 }
 
 .wrapsearchfields {
