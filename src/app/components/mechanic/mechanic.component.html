@@ -27,7 +27,7 @@
 
 <div *ngIf="selectedMoto">
 
-  <table class="table">
+  <table class="table table-bordered">
     <thead class="thead-dark">
     <div class="wrapsearchfields">
 
@@ -48,11 +48,16 @@
       </label>
       <button id="buttonLocation" class="buttonSearch" (click)="filterOnEquipmentLocation(searchFieldLocation.value)">Search</button>
     </div>
-    <tr>
-      <th style="width: 15%">Equipment number</th>
-      <th style="width: 70%">Equipment description</th>
-      <th style="width: 15%">Location</th>
-    </tr>
+
+
+      <tr>
+        <th scope="row" style="width: 15%">Equipment number</th>
+        <th scope="row" style="width: 50%">Equipment description</th>
+        <th scope="row" style="width: 15%">Location</th>
+        <th scope="row" style="width: 20%">Image</th>
+      </tr>
+
+
     </thead>
     <tbody>
     <tr *ngFor=" let equipmentss of equipmentService.getEquipmentList()"
@@ -62,22 +67,22 @@
         && equipmentss.filterEquipDescr && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
         {{equipmentss.equipmentNr}}
       </td>
-
       <td
         *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motortype == selectedMoto.name
         && equipmentss.filterEquipDescr && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
         {{equipmentss.objectDescription}}
       </td>
-
-
       <td
         *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motortype == selectedMoto.name
         && equipmentss.filterEquipDescr && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
         {{equipmentss.building + equipmentss.hangar + " " + equipmentss.department}}
       </td>
-    </tr>
+      <td *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motortype == selectedMoto.name
+      && equipmentss.filterEquipDescr && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
+      <img class="imageClass" [src]="equipmentss.imageEquipment" alt="placeholder"/>
+      </td>
 
+    </tr>
     </tbody>
   </table>
-
 </div>

@@ -25,6 +25,7 @@ export class MechanicComponent implements OnInit {
   public filterEquipmentNr: Boolean;
   public filterLocation: Boolean;
 
+
   listDepartments = Departments;
   selectedDept: Dept;
 
@@ -38,6 +39,7 @@ export class MechanicComponent implements OnInit {
     this.filterDescription = true;
     this.filterEquipmentNr = true;
     this.filterLocation = true;
+
   }
 
   ngOnInit() {
