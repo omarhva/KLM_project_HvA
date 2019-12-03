@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Router} from "@angular/router";
 import * as firebase from "firebase/app";
 import 'firebase/auth';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -50,5 +51,17 @@ export class ServicefbService {
   isLoggedIn() {
     return !!this.getToken();
   }
+  logout() {
+    firebase.auth().signOut();
+
+    this.refreshToken();
+    this.route.navigate(['/home']);
+
+  }
+
+  returncurrentUser() {
+    return firebase.auth().currentUser;
+  }
+
 
 }
