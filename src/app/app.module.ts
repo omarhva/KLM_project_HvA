@@ -14,6 +14,8 @@ import {ErrorPageComponent} from "./components/mainpage/error-page/error-page.co
 import {RouterModule} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
+import {ModalModule} from "../_modal";
+
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     GeneralComponent,
     ErrorPageComponent,
 
+
   ],
   imports: [
     BrowserModule,
@@ -34,8 +37,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    ModalModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

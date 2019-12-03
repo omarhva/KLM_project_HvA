@@ -35,33 +35,41 @@
         <input id="searchEquipmentNr" [formControl]="searchFieldEquipmentNr"
                (change)="filterOnEquipmentNr(searchFieldEquipmentNr.value)" placeholder="equipment number">
       </label>
-      <button id="buttonEquipmentNr" class="buttonSearch" (click)="filterOnEquipmentNr(searchFieldEquipmentNr.value)">Search</button>
+      <button id="buttonEquipmentNr" class="buttonSearch" (click)="filterOnEquipmentNr(searchFieldEquipmentNr.value)">
+        Search
+      </button>
 
       <label>
         <input class="searchEquipment" [formControl]="searchFieldEquipment"
                (change)="filterOnEquipmentDescription(searchFieldEquipment.value)" placeholder="equipment description">
       </label>
-      <button id="buttonEquipment" class="buttonSearch" (click)="filterOnEquipmentDescription(searchFieldEquipment.value)">Search</button>
+      <button id="buttonEquipment" class="buttonSearch"
+              (click)="filterOnEquipmentDescription(searchFieldEquipment.value)">Search
+      </button>
 
       <label>
         <input id="searchLocation" [formControl]="searchFieldLocation" placeholder="location">
       </label>
-      <button id="buttonLocation" class="buttonSearch" (click)="filterOnEquipmentLocation(searchFieldLocation.value)">Search</button>
+      <button id="buttonLocation" class="buttonSearch" (click)="filterOnEquipmentLocation(searchFieldLocation.value)">
+        Search
+      </button>
     </div>
 
 
-      <tr>
-        <th scope="row" style="width: 15%">Equipment number</th>
-        <th scope="row" style="width: 50%">Equipment description</th>
-        <th scope="row" style="width: 15%">Location</th>
-        <th scope="row" style="width: 20%">Image</th>
-      </tr>
+    <tr>
+      <th scope="row" style="width: 15%">Equipment number</th>
+      <th scope="row" style="width: 45%">Equipment description</th>
+      <th scope="row" style="width: 15%">Location</th>
+      <th scope="row" style="width: 20%">Image</th>
+    </tr>
 
 
     </thead>
     <tbody>
     <tr *ngFor=" let equipmentss of equipmentService.getEquipmentList()"
-        [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}">
+        [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}"
+        (click)="onClickList">
+
       <td
         *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motortype == selectedMoto.name
         && equipmentss.filterEquipDescr && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
@@ -79,7 +87,7 @@
       </td>
       <td *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motortype == selectedMoto.name
       && equipmentss.filterEquipDescr && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
-      <img class="imageClass" [src]="equipmentss.imageEquipment" alt="placeholder"/>
+        <img class="imageClass" [src]="equipmentss.imageEquipment" alt="placeholder"/>
       </td>
 
     </tr>

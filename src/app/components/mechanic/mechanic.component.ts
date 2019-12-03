@@ -25,7 +25,6 @@ export class MechanicComponent implements OnInit {
   public filterEquipmentNr: Boolean;
   public filterLocation: Boolean;
 
-
   listDepartments = Departments;
   selectedDept: Dept;
 
@@ -53,6 +52,10 @@ export class MechanicComponent implements OnInit {
   onSelect(dept: Dept): void {
     this.selectedDept = dept;
     console.log("Value department: " + dept.name);
+  }
+
+  onClickList(){
+    
   }
 
   onSelectMotor(motorT: MotorT) {
