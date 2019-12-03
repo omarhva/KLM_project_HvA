@@ -8,6 +8,8 @@ import {Dept} from "./mock/department";
 import {MotorT} from "./mock/motortype";
 import {Motortypes} from "./mock/mock-motortype";
 
+import {ModalService} from "../../../_modal";
+
 @Component({
   selector: 'app-mechanic',
   templateUrl: './mechanic.component.html',
@@ -33,7 +35,8 @@ export class MechanicComponent implements OnInit {
   selectedMoto: MotorT;
 
 
-  constructor(private equipmentService: EquipmentService) {
+
+  constructor(private equipmentService: EquipmentService, private modalService: ModalService) {
     this.equipmentList = this.equipmentService.getEquipmentList();
     this.filterDescription = true;
     this.filterEquipmentNr = true;
@@ -55,12 +58,24 @@ export class MechanicComponent implements OnInit {
   }
 
   onClickList(){
-    
+
   }
+  /*-----------------------MODAL STUFF------------------------*/
+  openModal(id: string) {
+    this.modalService.open(id);
+
+  }
+  /*---------------------------------------------------------*/
+
 
   onSelectMotor(motorT: MotorT) {
     this.selectedMoto = motorT;
     console.log("Value motortype: " + motorT.name);
+  }
+
+  onSelectList(selectedEquipment: EquipmentModel){
+    console.log(selectedEquipment);
+    return selectedEquipment;
   }
 
 

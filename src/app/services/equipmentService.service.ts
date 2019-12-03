@@ -56,6 +56,12 @@ export class EquipmentService {
     return this.equipmentList;
   }
 
+  getEquipmentNr(){
+
+  }
+
+
+
   checkCode(status: string) {
     switch (status) {
       case "PM1A":

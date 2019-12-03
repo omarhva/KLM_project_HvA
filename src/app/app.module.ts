@@ -15,6 +15,9 @@ import {RouterModule} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import {ModalModule} from "../_modal";
+import { ModalHomeComponent } from './components/mechanic/modal-home/modal-home.component';
+import { ModalDetailComponent } from './components/mechanic/modal-detail/modal-detail.component';
+
 
 
 @NgModule({
@@ -28,6 +31,8 @@ import {ModalModule} from "../_modal";
     MaintenanceComponent,
     GeneralComponent,
     ErrorPageComponent,
+    ModalHomeComponent,
+    ModalDetailComponent,
 
 
   ],
