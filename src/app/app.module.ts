@@ -17,6 +17,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ModalModule} from "../_modal";
 import { ModalHomeComponent } from './components/mechanic/modal-home/modal-home.component';
 import { ModalDetailComponent } from './components/mechanic/modal-detail/modal-detail.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 
@@ -35,6 +36,7 @@ import { ModalDetailComponent } from './components/mechanic/modal-detail/modal-d
     ModalDetailComponent,
 
 
+
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ import { ModalDetailComponent } from './components/mechanic/modal-detail/modal-d
     FormsModule,
     ReactiveFormsModule,
     ModalModule,
+    HttpClientModule
 
   ],
   providers: [],

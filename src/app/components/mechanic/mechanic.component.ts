@@ -23,9 +23,7 @@ export class MechanicComponent implements OnInit {
   public searchFieldLocation;
   public searchFieldEquipmentNr;
   public showTable: Boolean;
-  public filterDescription: Boolean;
-  public filterEquipmentNr: Boolean;
-  public filterLocation: Boolean;
+
 
   listDepartments = Departments;
   selectedDept: Dept;
@@ -37,14 +35,16 @@ export class MechanicComponent implements OnInit {
 
 
   constructor(private equipmentService: EquipmentService, private modalService: ModalService) {
-    this.equipmentList = this.equipmentService.getEquipmentList();
-    this.filterDescription = true;
-    this.filterEquipmentNr = true;
-    this.filterLocation = true;
+
 
   }
 
   ngOnInit() {
+
+    this.equipmentService.getAllEquipment().subscribe(response =>{
+      this.equipmentList = response;
+      console.log(this.equipmentList);
+    });
     this.showTable = true;
     this.searchFieldEquipment = new FormControl();
     this.searchFieldLocation = new FormControl();
@@ -81,13 +81,13 @@ export class MechanicComponent implements OnInit {
 
 //Filter on equipment description on enter. -> Check HTML mechanic.component.html = (change).
   filterOnEquipmentDescription(equip: string) {
-    for (let x of this.equipmentService.getEquipmentList()) {
-      if (!x.objectDescription.includes(equip)) {
-        x.filterEquipDescr = false;
+    for (let x of this.equipmentList) {
+      if (!x.objectDescription.includes(equip.toUpperCase())) {
+        x.filterEquipDescription = false;
       }
 
-      if (x.objectDescription.includes(equip)) {
-        x.filterEquipDescr = true;
+      if (x.objectDescription.includes(equip.toUpperCase())) {
+        x.filterEquipDescription = true;
         console.log(x.objectDescription.valueOf());
         console.log(equip);
       }
@@ -95,13 +95,13 @@ export class MechanicComponent implements OnInit {
   }
 // Filter on equipment location on enter
   filterOnEquipmentLocation(equip: string) {
-    for (let x of this.equipmentService.getEquipmentList()) {
+    for (let x of this.equipmentList) {
 
-      if (!x.hangar.includes(equip)) {
+      if (!x.hangar.includes(equip.toUpperCase())) {
         x.filterLocation = false;
       }
 
-      if (x.hangar.includes(equip)) {
+      if (x.hangar.includes(equip.toUpperCase())) {
         x.filterLocation = true;
 
       }
@@ -111,12 +111,12 @@ export class MechanicComponent implements OnInit {
   // Filter on equipmentNr on enter
   filterOnEquipmentNr(equip: string) {
 
-    for (let x of this.equipmentService.getEquipmentList()) {
-      if (!x.equipmentNr.toString().includes(equip)) {
+    for (let x of this.equipmentList) {
+      if (!x.equipmentNr.toString().includes(equip.toUpperCase())) {
         x.filterEquipmentNr = false;
       }
 
-      if (x.equipmentNr.toString().includes(equip)) {
+      if (x.equipmentNr.toString().includes(equip.toUpperCase())) {
         x.filterEquipmentNr = true;
 
       }
