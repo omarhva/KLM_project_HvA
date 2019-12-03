@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {EquipmentService} from "../../../services/equipmentService.service";
+
 
 @Component({
   selector: 'app-modal-detail',
@@ -8,9 +9,12 @@ import {EquipmentService} from "../../../services/equipmentService.service";
 })
 export class ModalDetailComponent implements OnInit {
 
-  constructor(private equipmentService: EquipmentService) { }
+
+  constructor(private equipmentService: EquipmentService) {
+  }
 
   ngOnInit() {
+    //this.equipmentService.equipmentNr = this.equipmentService.index;
   }
 
 }

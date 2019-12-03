@@ -1,7 +1,6 @@
 <h1>Info equipment</h1>
 <div>
-  <p>Equipment number: {{equipmentService.equipmentList}} </p>
-  <p>Equipment description: </p>
-  <p>Location: </p>
-  <p>Image</p>
+  <p>Equipment number: {{this.equipmentService.equipmentNr}} </p>
+  <p>Equipment description: {{this.equipmentService.description}} </p>
+  <img class="imageClass" [src]="this.equipmentService.imageEquipment" alt="placeholder">
 </div>

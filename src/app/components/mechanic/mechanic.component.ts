@@ -17,6 +17,7 @@ import {ModalService} from "../../../_modal";
 })
 
 export class MechanicComponent implements OnInit {
+  private specificEquipment;
 
   public equipmentList: EquipmentModel[];
   public searchFieldEquipment;
@@ -63,7 +64,6 @@ export class MechanicComponent implements OnInit {
   /*-----------------------MODAL STUFF------------------------*/
   openModal(id: string) {
     this.modalService.open(id);
-
   }
   /*---------------------------------------------------------*/
 
@@ -74,9 +74,17 @@ export class MechanicComponent implements OnInit {
   }
 
   onSelectList(selectedEquipment: EquipmentModel){
-    console.log(selectedEquipment);
+    for (let i = 0; i < this.equipmentService.equipmentList.length; i++){
+      if (this.equipmentService.equipmentList[i].equipmentNr == selectedEquipment.equipmentNr){
+        this.equipmentService.equipmentNr = this.equipmentService.equipmentList[i].equipmentNr;
+        this.equipmentService.description = this.equipmentService.equipmentList[i].objectDescription;
+        this.equipmentService.imageEquipment = this.equipmentService.equipmentList[i].imageEquipment;
+      }
+    }
+    console.log(this.equipmentService.equipmentNr);
     return selectedEquipment;
   }
+
 
 
 //Filter on equipment description on enter. -> Check HTML mechanic.component.html = (change).
