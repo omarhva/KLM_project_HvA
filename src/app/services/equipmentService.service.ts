@@ -1,27 +1,22 @@
 import {Injectable} from '@angular/core';
 import {EquipmentModel} from "../models/equipmentModel";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EquipmentService {
 
-  public equipmentList: EquipmentModel[];
+
+  private _equipmentList: EquipmentModel[];
   public color: string = "";
-  public index;
-
-  public description;
-  public imageEquipment;
-  public equipmentNr;
-
-  public buildingModal;
-  public hangar;
-  public departmentModal;
-
-  constructor() {
+  public index: number;
 
 
-    this.equipmentList = [
+  constructor(private serverService: HttpClient) {
+
+
+    this._equipmentList = [
       new EquipmentModel(107608, "BUILDUP STAND LPT -80C2", "I",
         "PM2A", null, "LPT", "410", "10", "CF6", "/assets/images/BUILDUP STAND LPT -80C2.jpg"),
 
@@ -60,12 +55,15 @@ export class EquipmentService {
     ]
   }
 
+
   getEquipmentList() {
-    return this.equipmentList;
+    return this._equipmentList;
   }
 
 
-
+  getAllEquipment() {
+    return this.serverService.get<EquipmentModel[]>("http://localhost:8085/rest/equipment")
+  }
 
   checkCode(status: string) {
     switch (status) {
