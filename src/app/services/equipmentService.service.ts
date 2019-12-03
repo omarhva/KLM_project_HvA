@@ -11,6 +11,15 @@ export class EquipmentService {
   private _equipmentList: EquipmentModel[];
   public color: string = "";
   public index: number;
+  public equipmentList;
+
+  public equipmentNr;
+  public description;
+  public imageEquipment;
+
+  public buildingModal;
+  public hangar;
+  public departmentModal;
 
 
   constructor(private serverService: HttpClient) {

@@ -45,6 +45,7 @@ export class MechanicComponent implements OnInit {
       this.equipmentList = response;
       console.log(this.equipmentList);
     });
+
     this.showTable = true;
     this.searchFieldEquipment = new FormControl();
     this.searchFieldLocation = new FormControl();
@@ -74,7 +75,19 @@ export class MechanicComponent implements OnInit {
   }
 
   onSelectList(selectedEquipment: EquipmentModel){
-    console.log(selectedEquipment);
+    for (let i = 0; i < this.equipmentList.length; i++){
+      if (this.equipmentList[i].equipmentNr == selectedEquipment.equipmentNr){
+
+        this.equipmentService.equipmentNr = this.equipmentList[i].equipmentNr;
+        this.equipmentService.description = this.equipmentList[i].objectDescription;
+        this.equipmentService.imageEquipment = this.equipmentList[i].imageEquipment;
+
+        this.equipmentService.buildingModal = this.equipmentList[i].building;
+        this.equipmentService.hangar = this.equipmentList[i].hangar;
+        this.equipmentService.departmentModal = this.equipmentList[i].department;
+      }
+    }
+    console.log(this.equipmentService.equipmentNr);
     return selectedEquipment;
   }
 
