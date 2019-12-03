@@ -11,7 +11,7 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
-button {
+button  {
   background-color: rgb(76, 150, 212);
   color: white;
   padding: 14px 20px;
@@ -25,10 +25,11 @@ button:hover {
   opacity: 0.8;
 }
 
-#loginForm {
+.validationaform{
   background: deepskyblue;
 
 }
+
 
 
 .container {
@@ -41,5 +42,9 @@ button:hover {
 span.psw {
   float: right;
   padding-top: 16px;
+}
+.validationError{
+  color: white;
+
 }
 
