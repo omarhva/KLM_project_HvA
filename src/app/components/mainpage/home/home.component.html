@@ -1,13 +1,31 @@
-<form id="loginForm">
+<!--<form id="loginForm">-->
+<!--  <div class="container">-->
+<!--    <label><b>Username</b></label>-->
+<!--    <input type="text" placeholder="Enter Username" name="username" required>-->
+
+<!--    <label><b>Password</b></label>-->
+<!--    <input type="password" placeholder="Enter Password" name="psw" required>-->
+
+<!--    <button type="button" (click)="navigateToUserRole()">Login</button>-->
+
+
+<!--  </div>-->
+<!--</form>-->
+<form class="validationaform" (ngSubmit)="onSigIn(f)" #f="ngForm">
+
   <div class="container">
     <label><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="username" required>
+    <input type="text" id="username" ngModel name="username" placeholder="Enter Username" required #username="ngModel">
 
     <label><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" id="psw" ngModel name="psw" placeholder="Enter Password" required #psw="ngModel">
 
-    <button type="button" (click)="navigateToUserRole()">Login</button>
+    <button type="sumbit" [disabled]="!f.valid">Login</button>
+
+    <span class="validationError" *ngIf="!psw.valid || !username.valid ">
+      Please! write your informations in the fields </span>
 
 
   </div>
 </form>
+

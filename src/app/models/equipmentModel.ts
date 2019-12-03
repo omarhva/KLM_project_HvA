@@ -12,12 +12,13 @@ export class EquipmentModel {
   public filterEquipDescr: boolean;
   public filterEquipmentNr: Boolean;
   public filterLocation: Boolean;
+  public imageEquipment: string;
 
 
 
 
   constructor(equipmentNr: number, objectDescription: string, userStatus: string, code: string, priority: number,
-              department: string, building: string, hangar: string, motortype: string) {
+              department: string, building: string, hangar: string, motortype: string, imageEquipment: string) {
     this.equipmentNr = equipmentNr;
     this.objectDescription = objectDescription;
     this.userStatus = userStatus;
@@ -30,5 +31,6 @@ export class EquipmentModel {
     this.filterEquipDescr = true;
     this.filterEquipmentNr = true;
     this.filterLocation = true;
+    this.imageEquipment = imageEquipment;
   }
 }

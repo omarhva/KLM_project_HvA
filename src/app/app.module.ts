@@ -13,7 +13,11 @@ import {GeneralComponent} from './components/general/general.component';
 import {ErrorPageComponent} from "./components/mainpage/error-page/error-page.component";
 import {RouterModule} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+
+import {ModalModule} from "../_modal";
+import { ModalHomeComponent } from './components/mechanic/modal-home/modal-home.component';
+import { ModalDetailComponent } from './components/mechanic/modal-detail/modal-detail.component';
+
 
 
 @NgModule({
@@ -27,6 +31,9 @@ import {HttpClientModule} from "@angular/common/http";
     MaintenanceComponent,
     GeneralComponent,
     ErrorPageComponent,
+    ModalHomeComponent,
+    ModalDetailComponent,
+
 
   ],
   imports: [
@@ -35,9 +42,11 @@ import {HttpClientModule} from "@angular/common/http";
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    ModalModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

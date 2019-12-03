@@ -14,7 +14,6 @@
   position: relative;
   border-color: black;
   margin-left: 3%;
-
 }
 
 #buttonEquipment{
@@ -92,3 +91,10 @@ h2 {
   text-align: center;
 }
 
+.imageClass{
+  height: 150px;
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

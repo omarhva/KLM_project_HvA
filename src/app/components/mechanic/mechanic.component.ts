@@ -8,6 +8,8 @@ import {Dept} from "./mock/department";
 import {MotorT} from "./mock/motortype";
 import {Motortypes} from "./mock/mock-motortype";
 
+import {ModalService} from "../../../_modal";
+
 @Component({
   selector: 'app-mechanic',
   templateUrl: './mechanic.component.html',
@@ -16,7 +18,7 @@ import {Motortypes} from "./mock/mock-motortype";
 
 export class MechanicComponent implements OnInit {
 
-  public equipmentList;
+  public equipmentList: EquipmentModel[];
   public searchFieldEquipment;
   public searchFieldLocation;
   public searchFieldEquipmentNr;
@@ -33,19 +35,16 @@ export class MechanicComponent implements OnInit {
   selectedMoto: MotorT;
 
 
-  constructor(private equipmentService: EquipmentService) {
 
+  constructor(private equipmentService: EquipmentService, private modalService: ModalService) {
+    this.equipmentList = this.equipmentService.getEquipmentList();
     this.filterDescription = true;
     this.filterEquipmentNr = true;
     this.filterLocation = true;
+
   }
 
   ngOnInit() {
-
-    this.equipmentService.getAllEquipment().subscribe(response => {
-      console.log(response);
-      this.equipmentList = response;
-    });
     this.showTable = true;
     this.searchFieldEquipment = new FormControl();
     this.searchFieldLocation = new FormControl();
@@ -58,9 +57,25 @@ export class MechanicComponent implements OnInit {
     console.log("Value department: " + dept.name);
   }
 
+  onClickList(){
+
+  }
+  /*-----------------------MODAL STUFF------------------------*/
+  openModal(id: string) {
+    this.modalService.open(id);
+
+  }
+  /*---------------------------------------------------------*/
+
+
   onSelectMotor(motorT: MotorT) {
     this.selectedMoto = motorT;
     console.log("Value motortype: " + motorT.name);
+  }
+
+  onSelectList(selectedEquipment: EquipmentModel){
+    console.log(selectedEquipment);
+    return selectedEquipment;
   }
 
 
