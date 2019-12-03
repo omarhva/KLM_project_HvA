@@ -10,7 +10,7 @@ export class EquipmentModel {
   public hangar: string;
   public motortype: string;
   public filterEquipDescr: boolean;
-  public filterEquipmentNr: Boolean;
+  public filterEquipmentNr: boolean;
   public filterLocation: Boolean;
   public imageEquipment: string;
 

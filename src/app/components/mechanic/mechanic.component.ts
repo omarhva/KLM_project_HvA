@@ -76,9 +76,14 @@ export class MechanicComponent implements OnInit {
   onSelectList(selectedEquipment: EquipmentModel){
     for (let i = 0; i < this.equipmentService.equipmentList.length; i++){
       if (this.equipmentService.equipmentList[i].equipmentNr == selectedEquipment.equipmentNr){
+
         this.equipmentService.equipmentNr = this.equipmentService.equipmentList[i].equipmentNr;
         this.equipmentService.description = this.equipmentService.equipmentList[i].objectDescription;
         this.equipmentService.imageEquipment = this.equipmentService.equipmentList[i].imageEquipment;
+
+        this.equipmentService.buildingModal = this.equipmentService.equipmentList[i].building;
+        this.equipmentService.hangar = this.equipmentService.equipmentList[i].hangar;
+        this.equipmentService.departmentModal = this.equipmentService.equipmentList[i].department;
       }
     }
     console.log(this.equipmentService.equipmentNr);
@@ -96,8 +101,6 @@ export class MechanicComponent implements OnInit {
 
       if (x.objectDescription.includes(equip)) {
         x.filterEquipDescr = true;
-        console.log(x.objectDescription.valueOf());
-        console.log(equip);
       }
     }
   }
@@ -111,14 +114,11 @@ export class MechanicComponent implements OnInit {
 
       if (x.hangar.includes(equip)) {
         x.filterLocation = true;
-
       }
     }
   }
-
   // Filter on equipmentNr on enter
   filterOnEquipmentNr(equip: string) {
-
     for (let x of this.equipmentService.getEquipmentList()) {
       if (!x.equipmentNr.toString().includes(equip)) {
         x.filterEquipmentNr = false;
@@ -126,7 +126,6 @@ export class MechanicComponent implements OnInit {
 
       if (x.equipmentNr.toString().includes(equip)) {
         x.filterEquipmentNr = true;
-
       }
     }
   }

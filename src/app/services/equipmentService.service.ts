@@ -14,6 +14,10 @@ export class EquipmentService {
   public imageEquipment;
   public equipmentNr;
 
+  public buildingModal;
+  public hangar;
+  public departmentModal;
+
   constructor() {
 
 
