@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {EquipmentModel} from "../models/equipmentModel";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class EquipmentService {
   public equipmentList: EquipmentModel[];
   public color: string = "";
   public index: number;
-  constructor() {
+  public reader: FileReader;
+  constructor(private serverService:HttpClient) {
 
 
     this.equipmentList = [
@@ -55,6 +57,10 @@ export class EquipmentService {
 
   getEquipmentList() {
     return this.equipmentList;
+  }
+
+  getAllEquipment(){
+    return this.serverService.get<EquipmentModel>("http://localhost:8085/rest/equipment")
   }
 
   checkCode(status: string) {

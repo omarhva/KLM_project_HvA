@@ -14,6 +14,8 @@ export class EquipmentModel {
   public filterLocation: Boolean;
 
 
+
+
   constructor(equipmentNr: number, objectDescription: string, userStatus: string, code: string, priority: number,
               department: string, building: string, hangar: string, motortype: string) {
     this.equipmentNr = equipmentNr;

@@ -16,7 +16,7 @@ import {Motortypes} from "./mock/mock-motortype";
 
 export class MechanicComponent implements OnInit {
 
-  public equipmentList: EquipmentModel[];
+  public equipmentList;
   public searchFieldEquipment;
   public searchFieldLocation;
   public searchFieldEquipmentNr;
@@ -34,13 +34,18 @@ export class MechanicComponent implements OnInit {
 
 
   constructor(private equipmentService: EquipmentService) {
-    this.equipmentList = this.equipmentService.getEquipmentList();
+
     this.filterDescription = true;
     this.filterEquipmentNr = true;
     this.filterLocation = true;
   }
 
   ngOnInit() {
+
+    this.equipmentService.getAllEquipment().subscribe(response => {
+      console.log(response);
+      this.equipmentList = response;
+    });
     this.showTable = true;
     this.searchFieldEquipment = new FormControl();
     this.searchFieldLocation = new FormControl();
