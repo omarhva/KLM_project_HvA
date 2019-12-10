@@ -1,7 +1,13 @@
-<h2 id="generalHeader">General list of equipment</h2>
+<div *ngIf="auth.returncurrentUser() == null">
+  <p>Please login to access this list</p>
+</div>
 
 
-<table class="table">
+
+
+<h2 id="generalHeader" *ngIf="auth.returncurrentUser() != null">General list of equipment</h2>
+
+<table class="table" *ngIf="auth.returncurrentUser() != null">
   <thead class="thead-dark">
   <label>
     <input class="searchEquipment" [formControl]="searchField" placeholder="equipment name">

@@ -9,6 +9,7 @@ import {MotorT} from "./mock/motortype";
 import {Motortypes} from "./mock/mock-motortype";
 
 import {ModalService} from "../../../_modal";
+import {ServicefbService} from "../../services/servicefb.service";
 
 @Component({
   selector: 'app-mechanic',
@@ -34,7 +35,7 @@ export class MechanicComponent implements OnInit {
 
 
 
-  constructor(private equipmentService: EquipmentService, private modalService: ModalService) {
+  constructor(private equipmentService: EquipmentService, private modalService: ModalService,private auth: ServicefbService) {
 
 
   }

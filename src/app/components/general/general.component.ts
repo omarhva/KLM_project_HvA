@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {EquipmentService} from "../../services/equipmentService.service";
 import {EquipmentModel} from "../../models/equipmentModel";
 import {FormControl} from "@angular/forms";
+import {ServicefbService} from "../../services/servicefb.service";
 
 @Component({
   selector: 'app-general',
@@ -14,7 +15,7 @@ export class GeneralComponent implements OnInit {
   private searchField;
   private showTable: Boolean;
 
-  constructor(private equipmentService: EquipmentService) {
+  constructor(private equipmentService: EquipmentService, private auth: ServicefbService) {
 
     this.equipmentsList = equipmentService.getEquipmentList()
   }
