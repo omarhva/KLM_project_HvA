@@ -86,6 +86,10 @@ export class MechanicComponent implements OnInit {
       }
     }
     console.log(this.equipmentService.equipmentNr);
+    this.equipmentService.selectedEquipment = selectedEquipment;
+    sessionStorage.setItem("selectedObject",this.equipmentService.selectedEquipment.objectDescription);
+    sessionStorage.setItem("selectedMotorType",this.equipmentService.selectedEquipment.motorType);
+    sessionStorage.setItem("selectedDepartment",this.equipmentService.selectedEquipment.department);
     return selectedEquipment;
   }
 

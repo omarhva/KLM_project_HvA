@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {EquipmentModel} from "../models/equipmentModel";
 import {HttpClient} from "@angular/common/http";
-import * as Collections from 'typescript-collections';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,8 @@ export class EquipmentService {
   public color: string = "";
   public index: number;
   public equipmentList;
-  public frequency: number;
+  public frequency: number = 0;
+  public selectedEquipment: EquipmentModel;
 
   public equipmentNr;
   public description;
@@ -76,11 +76,16 @@ export class EquipmentService {
     return this.serverService.get<EquipmentModel[]>("http://localhost:8085/rest/equipment/unique")
   }
 
-  getQuantity(selected: EquipmentModel){
-
-    this.frequency = Collections.arrays.frequency(this.equipmentList,selected);
-
-
+  getQuantity(){
+    for( let x of this._equipmentList){
+      if (sessionStorage.getItem("selectedObject") == x.objectDescription &&
+        sessionStorage.getItem("selectedMotorType") == x.motorType && sessionStorage.getItem("selectedDepartment") == x.department){
+        this.frequency++;
+      }
+    }
+    sessionStorage.removeItem("selectedObject");
+    sessionStorage.removeItem("selectedMotorType");
+    sessionStorage.removeItem("selectedDepartment");
     return this.frequency;
   }
 
