@@ -10,3 +10,76 @@
   left: 866%;
   border-color: black;
 }
+#buttonLocation{
+  position: absolute;
+  right: 0;
+}
+
+.wrapsearchfields {
+  display: flex;
+}
+
+.buttonSearch{
+  background-color: rgb(215,128,68);
+}
+
+.motortypes {
+  margin: 50px 0 2em 0;
+  list-style-type: none;
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+}
+
+.motortypes li {
+  cursor: pointer;
+  display: inline;
+  border-radius: 4px;
+
+  background-color: rgb(79,165,219);
+  margin: 1%;
+  padding: 1%;
+  height: 5%;
+}
+
+.motortypes li:hover {
+  color: white;
+  background-color: rgb(116,194,234);
+  left: .1em;
+}
+
+.motortypes li.selected {
+  background-color: white;
+  color: rgb(39,91,127);
+  border: solid rgb(74, 160, 217);
+}
+
+.motortypes li.selected:hover {
+  background-color: lightblue;
+  color: white;
+}
+
+.departments li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+
+.wrapbox {
+  display: flex;
+}
+
+h2 {
+  text-align: center;
+}
+
+.imageClass{
+  height: 150px;
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#first{
+
+}
