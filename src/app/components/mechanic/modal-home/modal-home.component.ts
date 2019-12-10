@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ModalService} from "../../../../_modal";
-import {EquipmentModel} from "../../../models/equipmentModel";
+
 
 
 
@@ -17,7 +17,5 @@ export class ModalHomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  closeModal(id: string) {
-    this.modalService.close(id);
-  }
+
 }
