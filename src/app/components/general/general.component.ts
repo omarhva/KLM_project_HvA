@@ -2,7 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {EquipmentService} from "../../services/equipmentService.service";
 import {EquipmentModel} from "../../models/equipmentModel";
 import {FormControl} from "@angular/forms";
-import {ServicefbService} from "../../services/servicefb.service";
+import {Departments} from "../mechanic/mock/mock-departments";
+import {Dept} from "../mechanic/mock/department";
+import {Motortypes} from "../mechanic/mock/mock-motortype";
+import {MotorT} from "../mechanic/mock/motortype";
+import {ModalService} from "../../../_modal";
 
 @Component({
   selector: 'app-general',
@@ -11,28 +15,122 @@ import {ServicefbService} from "../../services/servicefb.service";
 })
 export class GeneralComponent implements OnInit {
 
-  public equipmentsList: EquipmentModel[];
-  private searchField;
-  private showTable: Boolean;
+  public equipmentList: EquipmentModel[];
+  public searchFieldEquipment;
+  public searchFieldLocation;
+  public searchFieldEquipmentNr;
+  public showTable: Boolean;
 
-  constructor(private equipmentService: EquipmentService, private auth: ServicefbService) {
 
-    this.equipmentsList = equipmentService.getEquipmentList()
+  listDepartments = Departments;
+  selectedDept: Dept;
+
+
+  listMotortypes = Motortypes;
+  selectedMoto: MotorT;
+
+
+
+  constructor(private equipmentService: EquipmentService, private modalService: ModalService) {
+
+
   }
 
   ngOnInit() {
-    this.searchField = new FormControl();
-    this.searchField.valueChanges.subscribe(term => {
-      for (let code of this.equipmentService.getEquipmentList()) {
-        if (!this.searchField.isEmpty && code.objectDescription.includes(this.searchField.value)) {
-          this.showTable = true;
-        } else if (this.searchField.value.isEmpty && !code.objectDescription.includes(this.searchField.value)) {
-          this.showTable = false
-        }
-      }
-      console.log('searching for', term);
-      console.log(this.searchField.value);
+
+    this.equipmentService.getAllEquipment().subscribe(response =>{
+      this.equipmentList = response;
+      console.log(this.equipmentList);
     });
+
+    this.showTable = true;
+    this.searchFieldEquipment = new FormControl();
+    this.searchFieldLocation = new FormControl();
+    this.searchFieldEquipmentNr= new FormControl();
+  }
+
+
+  onSelect(dept: Dept): void {
+    this.selectedDept = dept;
+    console.log("Value department: " + dept.name);
+  }
+
+  onClickList(){
+
+  }
+  /*-----------------------MODAL STUFF------------------------*/
+  openModal(id: string) {
+    this.modalService.open(id);
+
+  }
+  /*---------------------------------------------------------*/
+
+
+  onSelectMotor(motorT: MotorT) {
+    this.selectedMoto = motorT;
+    console.log("Value motortype: " + motorT.name);
+  }
+
+  onSelectList(selectedEquipment: EquipmentModel){
+    for (let i = 0; i < this.equipmentList.length; i++){
+      if (this.equipmentList[i].equipmentNr == selectedEquipment.equipmentNr){
+
+        this.equipmentService.equipmentNr = this.equipmentList[i].equipmentNr;
+        this.equipmentService.description = this.equipmentList[i].objectDescription;
+        this.equipmentService.imageEquipment = this.equipmentList[i].imageEquipment;
+
+        this.equipmentService.buildingModal = this.equipmentList[i].building;
+        this.equipmentService.hangar = this.equipmentList[i].hangar;
+        this.equipmentService.departmentModal = this.equipmentList[i].department;
+      }
+    }
+    console.log(this.equipmentService.equipmentNr);
+    return selectedEquipment;
+  }
+
+
+//Filter on equipment description on enter. -> Check HTML mechanic.component.html = (change).
+  filterOnEquipmentDescription(equip: string) {
+    for (let x of this.equipmentList) {
+      if (!x.objectDescription.includes(equip.toUpperCase())) {
+        x.filterEquipDescription = false;
+      }
+
+      if (x.objectDescription.includes(equip.toUpperCase())) {
+        x.filterEquipDescription = true;
+        console.log(x.objectDescription.valueOf());
+        console.log(equip);
+      }
+    }
+  }
+// Filter on equipment location on enter
+  filterOnEquipmentLocation(equip: string) {
+    for (let x of this.equipmentList) {
+
+      if (!x.hangar.includes(equip.toUpperCase())) {
+        x.filterLocation = false;
+      }
+
+      if (x.hangar.includes(equip.toUpperCase())) {
+        x.filterLocation = true;
+
+      }
+    }
+  }
+
+  // Filter on equipmentNr on enter
+  filterOnEquipmentNr(equip: string) {
+
+    for (let x of this.equipmentList) {
+      if (!x.equipmentNr.toString().includes(equip.toUpperCase())) {
+        x.filterEquipmentNr = false;
+      }
+
+      if (x.equipmentNr.toString().includes(equip.toUpperCase())) {
+        x.filterEquipmentNr = true;
+
+      }
+    }
   }
 
 }
