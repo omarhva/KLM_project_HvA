@@ -1,5 +1,7 @@
 package com.example.demo.models;
 
+import java.util.Objects;
+
 public class Equipment {
 
     private int equipmentNr;
@@ -30,6 +32,19 @@ public class Equipment {
         this.filterEquipmentNr = true;
         this.filterLocation = true;
         this.imageEquipment = imageEquipment;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Equipment)) return false;
+        Equipment equipment = (Equipment) o;
+        return  Objects.equals(getObjectDescription(), equipment.getObjectDescription());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getObjectDescription());
     }
 
     public long getEquipmentNr() {

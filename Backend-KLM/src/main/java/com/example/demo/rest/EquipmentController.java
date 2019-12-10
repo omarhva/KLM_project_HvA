@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
+import java.util.Set;
 
 
 @RestController
@@ -26,8 +26,16 @@ public class EquipmentController implements EquipmentRepository {
         return equipmentRepository.findAll();
     }
 
+    @GetMapping("/rest/equipment/unique")
+    public List<Equipment> getAllUniqueEquipment() {return  equipmentRepository.findUnique(); }
+
     @Override
     public List<Equipment> findAll() {
         return equipmentRepository.findAll();
+    }
+
+    @Override
+    public List<Equipment> findUnique() {
+        return equipmentRepository.findUnique();
     }
 }

@@ -2,14 +2,19 @@ package com.example.demo.repositories;
 
 import com.example.demo.models.Equipment;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-@Component
+@Repository
 public class Mockrepository implements EquipmentRepository {
 
     private List<Equipment> equipmentList;
+    private Set<Equipment> uniqueSet;
+    private List<Equipment> uniqueList;
 
     public Mockrepository(){
 
@@ -53,10 +58,23 @@ public class Mockrepository implements EquipmentRepository {
                 "PM2A", 0, "LPT", "410", "10", "CF6", "/assets/images/TRANSPORT & STORAGE STAND LPT SHAFT.jpg"));
 
 
+        this.uniqueSet =  convertArrayToSet(this.equipmentList);
+        this.uniqueList = new ArrayList<>(this.uniqueSet);
+
+    }
+
+    public static <T> Set<Equipment> convertArrayToSet(List<Equipment> array)
+    {
+        return new HashSet<>(array);
     }
 
     @Override
     public List<Equipment> findAll() {
         return this.equipmentList;
+    }
+
+    @Override
+    public List<Equipment> findUnique() {
+        return  this.uniqueList;
     }
 }
