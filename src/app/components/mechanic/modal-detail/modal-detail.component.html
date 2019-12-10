@@ -3,5 +3,6 @@
   <p>Equipment number: {{this.equipmentService.equipmentNr}} </p>
   <p>Equipment description: {{this.equipmentService.description}} </p>
   <p>Location: {{this.equipmentService.buildingModal + this.equipmentService.hangar + ' ' + this.equipmentService.departmentModal}}</p>
+  <p>Quantity of available products: {{this.equipmentService.frequency}}</p>
   <img class="imageClass" [src]="this.equipmentService.imageEquipment" alt="placeholder">
 </div>

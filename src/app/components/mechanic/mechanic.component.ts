@@ -59,9 +59,6 @@ export class MechanicComponent implements OnInit {
     console.log("Value department: " + dept.name);
   }
 
-  onClickList(){
-
-  }
   /*-----------------------MODAL STUFF------------------------*/
   openModal(id: string) {
     this.modalService.open(id);

@@ -14,7 +14,9 @@ export class ModalDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+
     //this.equipmentService.equipmentNr = this.equipmentService.index;
+
   }
 
 }

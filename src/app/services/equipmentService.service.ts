@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {EquipmentModel} from "../models/equipmentModel";
 import {HttpClient} from "@angular/common/http";
+import * as Collections from 'typescript-collections';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class EquipmentService {
   public color: string = "";
   public index: number;
   public equipmentList;
+  public frequency: number;
 
   public equipmentNr;
   public description;
@@ -71,7 +73,15 @@ export class EquipmentService {
 
 
   getAllEquipment() {
-    return this.serverService.get<EquipmentModel[]>("http://localhost:8085/rest/equipment")
+    return this.serverService.get<EquipmentModel[]>("http://localhost:8085/rest/equipment/unique")
+  }
+
+  getQuantity(selected: EquipmentModel){
+
+    this.frequency = Collections.arrays.frequency(this.equipmentList,selected);
+
+
+    return this.frequency;
   }
 
   checkCode(status: string) {
