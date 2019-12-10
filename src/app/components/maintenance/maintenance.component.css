@@ -4,6 +4,61 @@
   margin-bottom: 1%;
 }
 
+.motortypes {
+  margin: 50px 0 2em 0;
+  list-style-type: none;
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+}
 
+.motortypes li {
+  cursor: pointer;
+  display: inline;
+  border-radius: 4px;
 
+  background-color: rgb(79,165,219);
+  margin: 1%;
+  padding: 1%;
+  height: 5%;
+}
+
+.motortypes li:hover {
+  color: white;
+  background-color: rgb(116,194,234);
+  left: .1em;
+}
+
+.motortypes li.selected {
+  background-color: white;
+  color: rgb(39,91,127);
+  border: solid rgb(74, 160, 217);
+}
+
+.motortypes li.selected:hover {
+  background-color: lightblue;
+  color: white;
+}
+
+.wrapbox {
+  display: flex;
+}
+
+h2{
+  text-align: center;
+}
+
+.imageClass{
+  height: 150px;
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.repairBtn {
+
+  width: 40%;
+  margin: 30%;
+}
 

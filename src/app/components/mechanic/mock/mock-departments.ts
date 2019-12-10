@@ -1,7 +1,7 @@
 import { Dept } from './department';
 
 export const Departments: Dept[] = [
-  { name: 'Motorlijn'},
+  { name: 'Motorline'},
   { name: 'Fan' },
   { name: 'LPC' },
   { name: 'Core' },

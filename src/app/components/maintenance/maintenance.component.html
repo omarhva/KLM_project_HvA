@@ -2,40 +2,94 @@
   <p>Please login to access this list</p>
 </div>
 
+<div *ngIf="auth.returncurrentUser() != null">
+  <h2 id="repairListHeader">Repair list</h2>
 
+  <h2>Choose a department</h2>
+  <div class="wrapbox">
+    <ul class="motortypes">
+      <li *ngFor="let dept of listDepartments"
+          [class.selected]="dept === selectedDept"
+          (click)="onSelect(dept)">
+        {{dept.name}}
+      </li>
+    </ul>
+  </div>
 
+  <div *ngIf="selectedDept">
+    <h2>Choose a motortype</h2>
+    <div class="wrapbox2">
 
+      <div *ngIf="selectedDept">
+        <ul class="motortypes">
+          <li *ngFor="let motorT of listMotortypes"
+              [class.selected]="motorT === selectedMoto"
+              (click)="onSelectMotor(motorT)">
+            {{motorT.name}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-<h2 id="repairListHeader" *ngIf="auth.returncurrentUser() != null">Repair list</h2>
-<table class="table" *ngIf="auth.returncurrentUser() != null">
-  <thead class="thead-dark">
-  <tr>
-    <th scope="col">Equipment Number</th>
-    <th scope="col">Building</th>
-    <th scope="col">Hangar</th>
-    <th scope="col">Department</th>
-    <th scope="col">UserStatus</th>
-    <th scope="col">Code</th>
-    <th scope="col">Priority</th>
-    <th scope="col">Repaired</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let equipmentss of equipmentService.getEquipmentList() let i = index"
-      [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}">
+  <table class="table table-bordered" *ngIf="auth.returncurrentUser() != null">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Equipment Number</th>
+      <th scope="col">Building</th>
+      <th scope="col">Hangar</th>
+      <th scope="col">Department</th>
+      <th scope="col">UserStatus</th>
+      <th scope="col">Code</th>
+      <th scope="col">Priority</th>
+      <th scope="col">Image</th>
+      <th scope="col">Repaired</th>
+    </tr>
+    </thead>
 
-    <td *ngIf="equipmentss.userStatus != 'I'">{{equipmentss.equipmentNr}}</td>
-    <td *ngIf="equipmentss.userStatus != 'I'">{{equipmentss.building}}</td>
-    <td *ngIf="equipmentss.userStatus != 'I'">{{equipmentss.hangar}}</td>
-    <td *ngIf="equipmentss.userStatus != 'I'">{{equipmentss.department}}</td>
-    <td *ngIf="equipmentss.userStatus != 'I'">{{equipmentss.userStatus}}</td>
-    <td *ngIf="equipmentss.userStatus != 'I'"
-        [style.background-color]="equipmentService.color">{{equipmentss.code}}</td>
-    <td *ngIf="equipmentss.userStatus != 'I'">{{equipmentss.priority}}</td>
-    <button *ngIf="equipmentss.userStatus != 'I'" class="btn-dark" (click)="repaired(i)">Repaired</button>
+    <tbody>
+    <tr *ngFor=" let equipmentss of equipmentList let i = index"
+        [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}">
 
-  </tr>
-  </tbody>
-</table>
+      <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+        && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
+        {{equipmentss.equipmentNr}}</td>
+
+      <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+        && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
+        {{equipmentss.building}}</td>
+
+      <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+        && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
+        {{equipmentss.hangar}}</td>
+
+      <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+        && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
+        {{equipmentss.department}}</td>
+
+      <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+        && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
+        {{equipmentss.userStatus}}</td>
+
+      <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+        && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr"
+          [style.background-color]="equipmentService.color">{{equipmentss.code}}</td>
+
+      <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+        && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr">{{equipmentss.priority}}</td>
+
+      <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+       && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
+        <img class="imageClass" [src]="equipmentss.imageEquipment" alt="placeholder"/>
+      </td>
+
+      <button *ngIf="equipmentss.userStatus != 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+        && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr"
+              class=" repairBtn btn-dark" (click)="repaired(i)">Repaired
+      </button>
+    </tr>
+    </tbody>
+  </table>
+</div>
 
 
