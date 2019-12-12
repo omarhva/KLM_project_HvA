@@ -24,7 +24,10 @@ export class ServicefbService {
         }
       )
       .catch(
-        error => console.log(error)
+        error => {
+          alert("Wrong credentials");
+          console.log(error)
+        }
       );
     console.log(firebase.auth().currentUser);
   }

@@ -1,4 +1,9 @@
-<h2 id="generalHeader">General list of equipment</h2>
+<div *ngIf="auth.returncurrentUser() == null">
+
+  <p>Please login to access this list</p>
+
+</div>
+<div *ngIf="auth.returncurrentUser() != null">
 <h2>Choose a department</h2>
 <div class="wrapbox">
   <ul class="motortypes">
@@ -105,4 +110,5 @@
     </tr>
     </tbody>
   </table>
+</div>
 </div>

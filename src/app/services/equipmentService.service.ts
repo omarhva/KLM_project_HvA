@@ -81,16 +81,10 @@ export class EquipmentService {
   }
 
   getQuantity(){
-    for( let x of this._equipmentList){
-      if (sessionStorage.getItem("selectedObject") == x.objectDescription &&
-        sessionStorage.getItem("selectedMotorType") == x.motorType && sessionStorage.getItem("selectedDepartment") == x.department){
-        this.frequency++;
-      }
-    }
-    sessionStorage.removeItem("selectedObject");
-    sessionStorage.removeItem("selectedMotorType");
-    sessionStorage.removeItem("selectedDepartment");
-    return this.frequency;
+
+
+   return this.frequency
+
   }
 
   checkCode(status: string) {
