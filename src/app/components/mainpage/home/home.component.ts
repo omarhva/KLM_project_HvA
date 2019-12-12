@@ -12,8 +12,6 @@ import {NgForm} from "@angular/forms";
 export class HomeComponent implements OnInit {
 
 
-  // constructor(private router: Router) {
-  // }
   constructor(public servicefbService: ServicefbService) {
   }
 
@@ -24,7 +22,7 @@ export class HomeComponent implements OnInit {
     const username = form.value.username;
     const psw = form.value.psw;
     this.servicefbService.signIn(username, psw);
-    console.log(username + ' and ' + psw);
+
 
   }
 

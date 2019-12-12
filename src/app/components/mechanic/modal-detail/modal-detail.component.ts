@@ -10,7 +10,7 @@ import {ModalService} from "../../../../_modal";
 })
 export class ModalDetailComponent implements OnInit {
 
-  public amount: number;
+
 
 
   constructor(private equipmentService: EquipmentService, private modalService: ModalService) {
@@ -18,7 +18,6 @@ export class ModalDetailComponent implements OnInit {
 
   ngOnInit() {
 
-  this.amount = this.equipmentService.getQuantity();
 
   }
 
