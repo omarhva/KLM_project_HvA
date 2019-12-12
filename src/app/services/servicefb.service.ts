@@ -26,7 +26,7 @@ export class ServicefbService {
       .catch(
         error => console.log(error)
       );
-    console.log(firebase.auth().currentUser)
+    console.log(firebase.auth().currentUser);
   }
 
   getToken(): string {

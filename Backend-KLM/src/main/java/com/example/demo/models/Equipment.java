@@ -1,24 +1,28 @@
 package com.example.demo.models;
 
-import java.util.Objects;
+import com.example.demo.models.helper.EquipmentEnum;
+import com.example.demo.models.helper.MotorEnum;
 
+import javax.persistence.Entity;
+import java.util.Objects;
+@Entity
 public class Equipment {
 
     private int equipmentNr;
     private String objectDescription;
-    private String userStatus;
+    private EquipmentEnum userStatus;
     private String code;
     private int priority;
     private String department;
     private String building;
     private String hangar;
-    private String motorType;
+    private MotorEnum motorType;
     private String imageEquipment;
     private boolean filterEquipDescription;
     private boolean filterEquipmentNr;
     private boolean filterLocation;
 
-    public Equipment(int equipmentNr, String objectDescription, String userStatus, String code, int priority, String department, String building, String hangar, String motorType,String imageEquipment) {
+    public Equipment(int equipmentNr, String objectDescription, EquipmentEnum userStatus, String code, int priority, String department, String building, String hangar, MotorEnum motorType,String imageEquipment) {
         this.equipmentNr = equipmentNr;
         this.objectDescription = objectDescription;
         this.userStatus = userStatus;
@@ -63,11 +67,11 @@ public class Equipment {
         this.objectDescription = objectDescription;
     }
 
-    public String getUserStatus() {
+    public EquipmentEnum getUserStatus() {
         return userStatus;
     }
 
-    public void setUserStatus(String userStatus) {
+    public void setUserStatus(EquipmentEnum userStatus) {
         this.userStatus = userStatus;
     }
 
@@ -119,11 +123,11 @@ public class Equipment {
         this.hangar = hangar;
     }
 
-    public String getMotorType() {
+    public MotorEnum getMotorType() {
         return motorType;
     }
 
-    public void setMotorType(String motorType) {
+    public void setMotorType(MotorEnum motorType) {
         this.motorType = motorType;
     }
 
