@@ -16,4 +16,47 @@ public class Employee {
   private boolean isAdmin;
   private long password;
 
+  public Employee(){
+
+  }
+
+
+  public Employee(long employeeNr, EmployeeEnum employeeEnum, boolean isAdmin, long password) {
+    this.employeeNr = employeeNr;
+    this.employeeEnum = employeeEnum;
+    this.isAdmin = isAdmin;
+    this.password = password;
+  }
+
+  public long getEmployeeNr() {
+    return employeeNr;
+  }
+
+  public void setEmployeeNr(long employeeNr) {
+    this.employeeNr = employeeNr;
+  }
+
+  public EmployeeEnum getEmployeeEnum() {
+    return employeeEnum;
+  }
+
+  public void setEmployeeEnum(EmployeeEnum employeeEnum) {
+    this.employeeEnum = employeeEnum;
+  }
+
+  public boolean isAdmin() {
+    return isAdmin;
+  }
+
+  public void setAdmin(boolean admin) {
+    isAdmin = admin;
+  }
+
+  public long getPassword() {
+    return password;
+  }
+
+  public void setPassword(long password) {
+    this.password = password;
+  }
 }

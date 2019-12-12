@@ -1,19 +1,23 @@
 package com.example.demo.models;
 
+import com.example.demo.models.helper.DataView;
 import com.example.demo.models.helper.EquipmentEnum;
 import com.example.demo.models.helper.MotorEnum;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.util.Objects;
 @Entity
 public class Equipment {
 
+    @Id
     private int equipmentNr;
     private String objectDescription;
     private EquipmentEnum userStatus;
     private String code;
     private int priority;
-    private String department;
     private String building;
     private String hangar;
     private MotorEnum motorType;
@@ -22,7 +26,15 @@ public class Equipment {
     private boolean filterEquipmentNr;
     private boolean filterLocation;
 
-    public Equipment(int equipmentNr, String objectDescription, EquipmentEnum userStatus, String code, int priority, String department, String building, String hangar, MotorEnum motorType,String imageEquipment) {
+    @ManyToOne
+    @JsonView(DataView.DynamicFilter.class)
+    public Department department;
+
+    public Equipment(){
+
+    }
+
+    public Equipment(int equipmentNr, String objectDescription, EquipmentEnum userStatus, String code, int priority, Department department, String building, String hangar, MotorEnum motorType,String imageEquipment) {
         this.equipmentNr = equipmentNr;
         this.objectDescription = objectDescription;
         this.userStatus = userStatus;
@@ -99,11 +111,11 @@ public class Equipment {
         this.priority = priority;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
 
@@ -169,4 +181,15 @@ public class Equipment {
                 ", motorType='" + motorType + '\'' +
                 '}';
     }
+
+  @ManyToOne(optional = false)
+  private Department departments;
+
+  public Department getDepartments() {
+    return departments;
+  }
+
+  public void setDepartments(Department departments) {
+    this.departments = departments;
+  }
 }

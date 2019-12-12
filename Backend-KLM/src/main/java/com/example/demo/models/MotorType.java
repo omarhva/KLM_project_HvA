@@ -9,4 +9,15 @@ import javax.persistence.Id;
 public class MotorType {
   @Id
   private MotorEnum motorEnum;
+
+  public MotorType() {
+  }
+
+  public MotorEnum getMotorEnum() {
+    return motorEnum;
+  }
+
+  public void setMotorEnum(MotorEnum motorEnum) {
+    this.motorEnum = motorEnum;
+  }
 }
