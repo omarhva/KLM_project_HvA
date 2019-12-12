@@ -42,7 +42,7 @@ export class MechanicComponent implements OnInit {
 
   ngOnInit() {
 
-    this.equipmentService.getAllEquipment().subscribe(response =>{
+    this.equipmentService.getUnqiueEquipment().subscribe(response =>{
       this.equipmentList = response;
       console.log(this.equipmentList);
     });

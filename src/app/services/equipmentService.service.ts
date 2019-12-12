@@ -73,6 +73,10 @@ export class EquipmentService {
 
 
   getAllEquipment() {
+    return this.serverService.get<EquipmentModel[]>("http://localhost:8085/rest/equipment")
+  }
+
+  getUnqiueEquipment(){
     return this.serverService.get<EquipmentModel[]>("http://localhost:8085/rest/equipment/unique")
   }
 
