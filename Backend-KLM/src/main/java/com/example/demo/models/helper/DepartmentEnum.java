@@ -1,7 +1,7 @@
 package com.example.demo.models.helper;
 
 public enum DepartmentEnum {
-  Motorlijn,
+  Motorline,
   Fan,
   LPC,
   Core,
@@ -9,5 +9,5 @@ public enum DepartmentEnum {
   HPCRotor,
   CRF,
   HPT,
-  LPT
+  LPT,
 }

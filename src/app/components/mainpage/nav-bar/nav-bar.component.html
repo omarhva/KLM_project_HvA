@@ -103,7 +103,7 @@
   <a routerLink="/mechanic" routerLinkActive="active">Mechanic</a>
   <a routerLink="/maintenance" routerLinkActive="active">Maintenance</a>
   <a routerLink="/general" routerLinkActive="active">General</a>
-  <a *ngIf="auth.returncurrentUser() != null" (click)="auth.logout()" routerLinkActive="active">Logout</a>
+  <a routerLink="/home" *ngIf="auth.returncurrentUser() != null" (click)="auth.logout()" routerLinkActive="active">Logout</a>
   <p id="currentUser" *ngIf="auth.returncurrentUser() != null">{{auth.returncurrentUser().email}}</p>
 </nav>
 

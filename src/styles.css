@@ -1,38 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
-/*nav a {*/
-/*  padding: 5px 10px;*/
-/*  text-decoration: none;*/
-/*  margin-right: 10px;*/
-/*  margin-top: 10px;*/
-
-/*  cursor: pointer;*/
-/*  display: inline;*/
-/*  border-radius: 4px;*/
-
-/*  background-color: rgb(79,165,219);*/
-/*}*/
-/*nav a:visited, a:link {*/
-/*  color: rgb(39,91,127);*/
-/*  border: solid rgb(74, 160, 217);*/
-/*}*/
-
-/*nav a:hover {*/
-/*  color: white;*/
-/*  background-color: rgb(116,194,234);*/
-/*  left: .1em;*/
-/*}*/
-/*nav a.active {*/
-/*  color: #039be5;*/
-/*}*/
-
-/* Style the tab */
+/* whole navbar */
 nav {
   overflow: hidden;
   border: 1px solid #ccc;
 }
 
-/* Style the buttons inside the tab */
+/* Style tabs */
 nav a {
   background-color: inherit;
   float: left;
@@ -44,19 +18,19 @@ nav a {
   font-size: 17px;
 }
 
-/* Change background color of buttons on hover */
+/* Hovering tab */
 nav a:hover {
   background-color: rgb(116,194,234);
   color: white;
 }
 
-/* Create an active/current tablink class */
+/* Active tab */
 nav a.active {
   background-color: rgb(79,165,219);
   color: black;
 }
 
-/* Style the tab content */
+/* Tab content */
 .navlink {
   display: none;
   padding: 6px 12px;
