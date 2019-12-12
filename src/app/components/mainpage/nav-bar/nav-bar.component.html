@@ -68,24 +68,43 @@
 <!--</ul>-->
 
 <!-- Navbar with tab highlights -->
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a *ngIf="auth.returncurrentUser()  == null" class="nav-item nav-link active" id="nav-login-tab" data-toggle="tab"
-       [routerLink]="['home']" role="tab" aria-controls="nav-home" aria-selected="true">Login</a>
+<!--<nav class="navbar navbar-expand-sm navbar-light bg-light">-->
+<!--  <div class="nav nav-tabs" id="nav-tab" role="tablist">-->
+<!--    <a *ngIf="auth.returncurrentUser()  == null" class="nav-item nav-link active" id="nav-login-tab" data-toggle="tab"-->
+<!--       [routerLink]="['home']" role="tab" aria-controls="nav-home" aria-selected="true">Login</a>-->
 
-    <a class="nav-item nav-link" id="nav-mechanic-tab" data-toggle="tab" [routerLink]="['mechanic']" role="tab"
-       aria-controls="nav-profile" aria-selected="false">Mechanic</a>
+<!--    <a class="nav-item nav-link" id="nav-mechanic-tab" data-toggle="tab" [routerLink]="['mechanic']" role="tab"-->
+<!--       aria-controls="nav-profile" aria-selected="false">Mechanic</a>-->
 
-    <a class="nav-item nav-link" id="nav-maintenance-tab" data-toggle="tab" [routerLink]="['maintenance']" role="tab"
-       aria-controls="nav-contact" aria-selected="false">Maintenance</a>
+<!--    <a class="nav-item nav-link" id="nav-maintenance-tab" data-toggle="tab" [routerLink]="['maintenance']" role="tab"-->
+<!--       aria-controls="nav-contact" aria-selected="false">Maintenance</a>-->
 
-    <a class="nav-item nav-link" id="nav-general-tab" data-toggle="tab" [routerLink]="['general']" role="tab"
-       aria-controls="nav-contact" aria-selected="false">General</a>
+<!--    <a class="nav-item nav-link" id="nav-general-tab" data-toggle="tab" [routerLink]="['general']" role="tab"-->
+<!--       aria-controls="nav-contact" aria-selected="false">General</a>-->
 
-    <a *ngIf="auth.returncurrentUser() != null" (click)="auth.logout()" class="nav-item nav-link" id="nav-logout-tab"
-       data-toggle="tab" [routerLink]="['home']" role="tab"
-       aria-controls="nav-contact" aria-selected="false">Logout</a>
+<!--    <a *ngIf="auth.returncurrentUser() != null" (click)="auth.logout()" class="nav-item nav-link" id="nav-logout-tab"-->
+<!--       data-toggle="tab" [routerLink]="['home']" role="tab"-->
+<!--       aria-controls="nav-contact" aria-selected="false"-->
+<!--       onclick="resetHighlights">Logout</a>-->
 
-    <a id="currentUser" *ngIf="auth.returncurrentUser() != null" class="nav-link">{{auth.returncurrentUser().email}}</a>
-  </div>
+<!--    <a id="currentUser" *ngIf="auth.returncurrentUser() != null" class="nav-link">{{auth.returncurrentUser().email}}</a>-->
+
+<!--    <script>-->
+<!--      $(document).ready(function () {-->
+<!--        $(".nav li.disabled a").click(function () {-->
+<!--          return false;-->
+<!--        });-->
+<!--      });-->
+<!--    </script>-->
+<!--  </div>-->
+<!--</nav>-->
+<nav>
+  <a *ngIf="auth.returncurrentUser() == null" routerLink="/home" routerLinkActive="active">Login</a>
+  <a routerLink="/mechanic" routerLinkActive="active">Mechanic</a>
+  <a routerLink="/maintenance" routerLinkActive="active">Maintenance</a>
+  <a routerLink="/general" routerLinkActive="active">General</a>
+  <a *ngIf="auth.returncurrentUser() != null" (click)="auth.logout()" routerLinkActive="active">Logout</a>
+  <p id="currentUser" *ngIf="auth.returncurrentUser() != null">{{auth.returncurrentUser().email}}</p>
 </nav>
+
+<router-outlet></router-outlet>

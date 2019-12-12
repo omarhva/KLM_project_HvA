@@ -1,6 +1,13 @@
 #currentUser {
   color:sienna;
   float: right;
+  padding-right: 40px;
+  padding-top: 12px;
+
+  background-color: inherit;
+  border: none;
+  outline: none;
+  font-size: 17px;
 }
 
 #nav-tab {

@@ -58,7 +58,6 @@ export class ServicefbService {
     firebase.auth().signOut();
 
     this.refreshToken();
-    this.route.navigate(['/home']);
 
   }
 

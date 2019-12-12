@@ -14,4 +14,8 @@ export class NavBarComponent implements OnInit {
   ngOnInit() {
   }
 
+  resetHighlights(){
+    document.getElementById('nav-general-tab').setAttribute('aria-selected', String(true));
+    document.getElementById('nav-general-tab').setAttribute('class', 'nav-item');
+  }
 }
