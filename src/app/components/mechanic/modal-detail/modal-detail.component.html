@@ -4,7 +4,7 @@
     Equipment number: {{this.equipmentService.equipmentNr}}<br>
     Equipment description: {{this.equipmentService.description}}<br>
     Location: {{this.equipmentService.buildingModal + this.equipmentService.hangar + ' ' + this.equipmentService.departmentModal}}<br>
-    Quantity of available products: {{amount}}<br>
+    Quantity of available products: {{this.equipmentService.selectedEquipment}}<br>
   </p>
   <img class="imageClass" [src]="this.equipmentService.imageEquipment" alt="placeholder">
 </div>
