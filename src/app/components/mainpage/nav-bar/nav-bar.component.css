@@ -1,5 +1,8 @@
-#currentUser{
-  margin-left:950%;
+#currentUser {
   color:sienna;
+  float: right;
+}
 
+#nav-tab {
+  display: flex;
 }
