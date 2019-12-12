@@ -29,7 +29,7 @@ export class ServicefbService {
           console.log(error)
         }
       );
-    console.log(firebase.auth().currentUser)
+    console.log(firebase.auth().currentUser);
   }
 
   getToken(): string {
