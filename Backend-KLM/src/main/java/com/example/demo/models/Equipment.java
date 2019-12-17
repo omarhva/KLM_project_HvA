@@ -1,6 +1,7 @@
 package com.example.demo.models;
 
 import com.example.demo.models.helper.DataView;
+import com.example.demo.models.helper.DepartmentEnum;
 import com.example.demo.models.helper.EquipmentEnum;
 import com.example.demo.models.helper.MotorEnum;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -14,28 +15,40 @@ import java.util.Objects;
 public class Equipment {
 
   @Id
+  @JsonView(DataView.DynamicFilter.class)
   private int equipmentNr;
+  @JsonView(DataView.DynamicFilter.class)
   private String objectDescription;
+  @JsonView(DataView.DynamicFilter.class)
   private EquipmentEnum userStatus;
+  @JsonView(DataView.DynamicFilter.class)
   private String code;
+  @JsonView(DataView.DynamicFilter.class)
   private int priority;
+  @JsonView(DataView.DynamicFilter.class)
   private String building;
+  @JsonView(DataView.DynamicFilter.class)
   private String hangar;
+  @JsonView(DataView.DynamicFilter.class)
   private MotorEnum motorType;
+  @JsonView(DataView.DynamicFilter.class)
   private String imageEquipment;
+  @JsonView(DataView.DynamicFilter.class)
   private boolean filterEquipDescription;
+  @JsonView(DataView.DynamicFilter.class)
   private boolean filterEquipmentNr;
+  @JsonView(DataView.DynamicFilter.class)
   private boolean filterLocation;
 
   @ManyToOne
   @JsonView(DataView.DynamicFilter.class)
-  public Department department;
+  public DepartmentEnum department;
 
-  public Equipment(int equipmentNr, String objectDescription, EquipmentEnum userStatus, String code, int priority, String department, String building, String hangar, MotorEnum motorType, String imageEquipment) {
+  public Equipment() {
 
   }
 
-  public Equipment(int equipmentNr, String objectDescription, EquipmentEnum userStatus, String code, int priority, Department department, String building, String hangar, MotorEnum motorType, String imageEquipment) {
+  public Equipment(int equipmentNr, String objectDescription, EquipmentEnum userStatus, String code, int priority, DepartmentEnum department, String building, String hangar, MotorEnum motorType, String imageEquipment) {
     this.equipmentNr = equipmentNr;
     this.objectDescription = objectDescription;
     this.userStatus = userStatus;
@@ -50,6 +63,8 @@ public class Equipment {
     this.filterLocation = true;
     this.imageEquipment = imageEquipment;
   }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -112,11 +127,11 @@ public class Equipment {
     this.priority = priority;
   }
 
-  public Department getDepartment() {
+  public DepartmentEnum getDepartment() {
     return department;
   }
 
-  public void setDepartment(Department department) {
+  public void setDepartment(DepartmentEnum department) {
     this.department = department;
   }
 
@@ -183,14 +198,14 @@ public class Equipment {
       '}';
   }
 
-  @ManyToOne(optional = false)
-  private Department departments;
-
-  public Department getDepartments() {
-    return departments;
-  }
-
-  public void setDepartments(Department departments) {
-    this.departments = departments;
-  }
+//  @ManyToOne(optional = false)
+//  private Department departments;
+//
+//  public Department getDepartments() {
+//    return departments;
+//  }
+//
+//  public void setDepartments(Department departments) {
+//    this.departments = departments;
+//  }
 }

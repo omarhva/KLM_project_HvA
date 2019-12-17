@@ -20,13 +20,13 @@ export class ServicefbService {
           firebase.auth().currentUser.getIdToken()
             .then(
               (token: string) => this.token = token
-            )
+            );
         }
       )
       .catch(
         error => {
           alert("Wrong credentials");
-          console.log(error)
+          console.log(error);
         }
       );
     console.log(firebase.auth().currentUser);
