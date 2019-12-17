@@ -21,15 +21,28 @@ public class RepositoryJPA implements EquipmentRepository {
 
   @Override
   public List<Equipment> findAll() {
-    TypedQuery<Equipment> query = this.em.createQuery(" SELECT e FROM Equipment e ", Equipment.class);
+    TypedQuery<Equipment> query = this.em.createQuery(" SELECT e FROM Equipment e  ", Equipment.class);
 
     return query.getResultList();
   }
 
   @Override
   public List<Equipment> findUnique() {
-    return null;
+    TypedQuery<Equipment> query = this.em.createQuery("  SELECT DISTINCT e FROM Equipment e  ", Equipment.class);
+
+    return query.getResultList();
   }
+
+  @Override
+  public Equipment save(Equipment equipment) {
+    return this.em.merge(equipment) ;
+  }
+
+  @Override
+  public Equipment findById(long id) {
+    return this.em.find(Equipment.class, id);
+  }
+
   public Equipment insert1(Equipment equipment){
 
     return em.merge(equipment);

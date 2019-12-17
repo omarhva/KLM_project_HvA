@@ -4,6 +4,7 @@ import com.example.demo.models.helper.DataView;
 import com.example.demo.models.helper.DepartmentEnum;
 import com.example.demo.models.helper.EquipmentEnum;
 import com.example.demo.models.helper.MotorEnum;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -17,7 +18,7 @@ public class Equipment {
 
   @Id
   @JsonView(DataView.DynamicFilter.class)
-  private int equipmentNr;
+  private long equipmentNr;
   @JsonView(DataView.DynamicFilter.class)
   private String objectDescription;
   @JsonView(DataView.DynamicFilter.class)
@@ -34,11 +35,11 @@ public class Equipment {
   private MotorEnum motorType;
   @JsonView(DataView.DynamicFilter.class)
   private String imageEquipment;
-  @JsonView(DataView.DynamicFilter.class)
+
   private boolean filterEquipDescription;
-  @JsonView(DataView.DynamicFilter.class)
+
   private boolean filterEquipmentNr;
-  @JsonView(DataView.DynamicFilter.class)
+
   private boolean filterLocation;
 
   @ManyToOne

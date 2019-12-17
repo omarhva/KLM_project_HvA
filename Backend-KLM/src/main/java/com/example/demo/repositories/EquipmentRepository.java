@@ -9,8 +9,12 @@ import java.util.List;
 @Repository
 public interface EquipmentRepository {
 
- public List<Equipment> findAll();
+  List<Equipment> findAll();
 
   List<Equipment> findUnique();
+
+  Equipment save(Equipment equipment);
+
+  Equipment findById(long id);
 
 }
