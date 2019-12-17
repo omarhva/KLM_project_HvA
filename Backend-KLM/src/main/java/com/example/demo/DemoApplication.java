@@ -42,8 +42,12 @@ public class DemoApplication implements CommandLineRunner {
     logger.info("test1->{}", equipmentRepository.insert(new Department(DepartmentEnum.HPT)));
     logger.info("test1->{}", equipmentRepository.insert(new Department(DepartmentEnum.LPT)));
     logger.info("test1->{}", equipmentRepository.insert(new Department(DepartmentEnum.LPC)));
+
     logger.info("test -> {}",equipmentRepository.insert1(new Equipment(1,"BUILDUP STAND LPT -80C2", EquipmentEnum.I,
       "PM2A", 1, new Department(DepartmentEnum.Core), "410", "10", MotorEnum.CF6, "/assets/images/BUILDUP STAND LPT -80C2.jpg")));
+
+    logger.info("test -> {}",equipmentRepository.insert1(new Equipment(12,"BUILDUP STAND LPT -80C2", EquipmentEnum.I,
+      "PM2A", 1, new Department(DepartmentEnum.Motorline), "410", "10", MotorEnum.CF6, "/assets/images/BUILDUP STAND LPT -80C2.jpg")));
 
 //    createInitialAEvents();
 //    logger.info("All Aeventd ->{}", equipmentRepository.findAll());
