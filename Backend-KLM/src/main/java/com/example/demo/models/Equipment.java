@@ -4,6 +4,7 @@ import com.example.demo.models.helper.DataView;
 import com.example.demo.models.helper.DepartmentEnum;
 import com.example.demo.models.helper.EquipmentEnum;
 import com.example.demo.models.helper.MotorEnum;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.Entity;
@@ -41,6 +42,7 @@ public class Equipment {
   private boolean filterLocation;
 
   @ManyToOne
+  @JsonManagedReference
   @JsonView(DataView.DynamicFilter.class)
   public Department department;
 

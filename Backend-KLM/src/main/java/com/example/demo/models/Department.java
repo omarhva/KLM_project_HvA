@@ -2,6 +2,7 @@ package com.example.demo.models;
 
 import com.example.demo.models.helper.DataView;
 import com.example.demo.models.helper.DepartmentEnum;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.Entity;
@@ -18,8 +19,18 @@ public class Department {
   private DepartmentEnum departmentcode;
 
 
+  @Override
+  public int hashCode() {
+    return super.hashCode();
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    return super.equals(obj);
+  }
 
   @OneToMany(mappedBy = "department")
+  @JsonBackReference
   @JsonView(DataView.DynamicFilter.class)
   public List<Equipment> equipment = new ArrayList<>();
 
