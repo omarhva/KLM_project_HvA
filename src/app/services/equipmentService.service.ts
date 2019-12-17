@@ -76,14 +76,14 @@ export class EquipmentService {
     return this.serverService.get<EquipmentModel[]>("http://localhost:8085/rest/equipment")
   }
 
-  getUnqiueEquipment(){
+  getUnqiueEquipment() {
     return this.serverService.get<EquipmentModel[]>("http://localhost:8085/rest/equipment/unique")
   }
 
-  getQuantity(){
+  getQuantity() {
 
 
-   return this.frequency
+    return this.frequency;
 
   }
 

@@ -1,5 +1,6 @@
 package com.example.demo.repositories;
 
+import com.example.demo.models.Department;
 import com.example.demo.models.Equipment;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
@@ -20,7 +21,7 @@ public class RepositoryJPA implements EquipmentRepository {
 
   @Override
   public List<Equipment> findAll() {
-    TypedQuery<Equipment> query = this.em.createQuery("SELECT e FROM equipment e", Equipment.class);
+    TypedQuery<Equipment> query = this.em.createQuery(" SELECT e FROM Equipment e ", Equipment.class);
 
     return query.getResultList();
   }
@@ -29,7 +30,11 @@ public class RepositoryJPA implements EquipmentRepository {
   public List<Equipment> findUnique() {
     return null;
   }
-  public Equipment insert(Equipment equipment){
+  public Equipment insert1(Equipment equipment){
+
     return em.merge(equipment);
+  }
+  public Department insert(Department department) {
+    return em.merge(department);
   }
 }

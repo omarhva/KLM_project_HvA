@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface EquipmentRepository {
 
-  List<Equipment> findAll();
+ public List<Equipment> findAll();
 
   List<Equipment> findUnique();
 

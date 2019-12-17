@@ -19,7 +19,7 @@ public class Department {
 
 
 
-  @OneToMany(mappedBy = "departments")
+  @OneToMany(mappedBy = "department")
   @JsonView(DataView.DynamicFilter.class)
   public List<Equipment> equipment = new ArrayList<>();
 

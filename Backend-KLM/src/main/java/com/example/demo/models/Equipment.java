@@ -42,13 +42,13 @@ public class Equipment {
 
   @ManyToOne
   @JsonView(DataView.DynamicFilter.class)
-  public DepartmentEnum department;
+  public Department department;
 
   public Equipment() {
 
   }
 
-  public Equipment(int equipmentNr, String objectDescription, EquipmentEnum userStatus, String code, int priority, DepartmentEnum department, String building, String hangar, MotorEnum motorType, String imageEquipment) {
+  public Equipment(int equipmentNr, String objectDescription, EquipmentEnum userStatus, String code, int priority, Department department, String building, String hangar, MotorEnum motorType, String imageEquipment) {
     this.equipmentNr = equipmentNr;
     this.objectDescription = objectDescription;
     this.userStatus = userStatus;
@@ -127,11 +127,11 @@ public class Equipment {
     this.priority = priority;
   }
 
-  public DepartmentEnum getDepartment() {
+  public Department getDepartment() {
     return department;
   }
 
-  public void setDepartment(DepartmentEnum department) {
+  public void setDepartment(Department department) {
     this.department = department;
   }
 
