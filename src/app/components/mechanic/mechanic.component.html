@@ -79,21 +79,21 @@
         (click)="openModal('blueprint'); onSelectList(equipmentss)">
 
       <td
-        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department.departmentcode == selectedDept.name && equipmentss.motorType == selectedMoto.name
         && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
         {{equipmentss.equipmentNr}}
       </td>
       <td
-        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+        *ngIf="equipmentss.userStatus == 'I' &&  equipmentss.department.departmentcode == selectedDept.name && equipmentss.motorType == selectedMoto.name
          && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
         {{equipmentss.objectDescription}}
       </td>
       <td
-        *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+        *ngIf="equipmentss.userStatus == 'I' &&  equipmentss.department.departmentcode == selectedDept.name && equipmentss.motorType == selectedMoto.name
          && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
-        {{equipmentss.building + equipmentss.hangar + " " + equipmentss.department}}
+        {{equipmentss.building + equipmentss.hangar + " " + equipmentss.department.departmentcode}}
       </td>
-      <td *ngIf="equipmentss.userStatus == 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+      <td *ngIf="equipmentss.userStatus == 'I' &&  equipmentss.department.departmentcode == selectedDept.name && equipmentss.motorType == selectedMoto.name
        && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
         <img class="imageClass"  [src]="equipmentss.imageEquipment" alt="placeholder"/>
       </td>

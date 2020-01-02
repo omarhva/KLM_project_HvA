@@ -82,14 +82,15 @@ export class MechanicComponent implements OnInit {
 
         this.equipmentService.buildingModal = this.equipmentList[i].building;
         this.equipmentService.hangar = this.equipmentList[i].hangar;
-        this.equipmentService.departmentModal = this.equipmentList[i].department;
+        // @ts-ignore
+        this.equipmentService.departmentModal = this.equipmentList[i].department.departmentcode;
+
       }
+
+
     }
     console.log(this.equipmentService.equipmentNr);
     this.equipmentService.selectedEquipment = selectedEquipment;
-    sessionStorage.setItem("selectedObject",this.equipmentService.selectedEquipment.objectDescription);
-    sessionStorage.setItem("selectedMotorType",this.equipmentService.selectedEquipment.motorType);
-    sessionStorage.setItem("selectedDepartment",this.equipmentService.selectedEquipment.department);
     return selectedEquipment;
   }
 

@@ -56,44 +56,44 @@ public class DemoApplication implements CommandLineRunner {
     // Equipment info invoeren
 
     logger.info("test -> {}",equipmentRepository.insert1(new Equipment(107608,"BUILDUP STAND LPT -80C2", EquipmentEnum.I,
-    "PM2A", 1, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.CF6, "/assets/images/BUILDUP STAND LPT -80C2.jpg")));
+    "PM2A", 1, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.CF6, "/assets/images/BUILDUPSTANDLPT80C2.jpg")));
 
     logger.info("test -> {}",equipmentRepository.insert1(new Equipment(107651,"BUILDUP STAND LPT -80C2", EquipmentEnum.IT,
-      "PM2A", 1, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.CF6, "/assets/images/BUILDUP STAND LPT -80C2.jpg")));
+      "PM2A", 1, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.CF6, "/assets/images/BUILDUPSTANDLPT80C2.jpg")));
 
     logger.info("test -> {}",equipmentRepository.insert1(new Equipment(107652,"BUILDUP STAND LPT -80C2", EquipmentEnum.I,
-      "PM2A", 1, new Department(DepartmentEnum.Core), "410", "10", MotorEnum.CF6, "/assets/images/BUILDUP STAND LPT -80C2.jpg")));
+      "PM2A", 1, new Department(DepartmentEnum.Core), "410", "10", MotorEnum.CF6, "/assets/images/BUILDUPSTANDLPT80C2.jpg")));
 
     logger.info("test -> {}",equipmentRepository.insert1(new Equipment(111283,"BUILDUP STAND LPT -80C2", EquipmentEnum.I,
-      "PM2A", 1, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.GEnX, "/assets/images/BUILDUP STAND LPT -80C2.jpg")));
+      "PM2A", 1, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.GEnX, "/assets/images/BUILDUPSTANDLPT80C2.jpg")));
 
 
     logger.info("test -> {}",equipmentRepository.insert1(new Equipment(102680,"BUILDUP STAND LPT -80E", EquipmentEnum.I,
-      "PM2A", 1, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.GEnX, "/assets/images/BUILDUP STAND LPT -80E.jpg")));
+      "PM2A", 1, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.GEnX, "/assets/images/BUILDUPSTANDLPT80E.jpg")));
 
     logger.info("test -> {}",equipmentRepository.insert1(new Equipment(119851,"BUILDUP STAND LPT -80E", EquipmentEnum.I,
-      "PM2A", 1, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.LEAP, "/assets/images/BUILDUP STAND LPT -80E.jpg")));
+      "PM2A", 1, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.LEAP, "/assets/images/BUILDUP STANDLPT80E.jpg")));
 
 
     logger.info("test -> {}",equipmentRepository.insert1(new Equipment(122075,"BUILDUP STAND LPT -80E", EquipmentEnum.I,
-      "PM2A", 1, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.LEAP, "/assets/images/BUILDUP STAND LPT -80E.jpg")));
+      "PM2A", 1, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.LEAP, "/assets/images/BUILDUPSTANDLPT80E.jpg")));
 
 
     logger.info("test -> {}",equipmentRepository.insert1(new Equipment(122076,"BUILDUP STAND LPT -80E", EquipmentEnum.I,
-      "PM2A", 1, new Department(DepartmentEnum.HPT), "410", "10", MotorEnum.CFM, "/assets/images/BUILDUP STAND LPT -80E.jpg")));
+      "PM2A", 1, new Department(DepartmentEnum.HPT), "410", "10", MotorEnum.CFM, "/assets/images/BUILDUPSTANDLPT80E.jpg")));
 
 
     logger.info("test -> {}",equipmentRepository.insert1(new Equipment(117919,"FIXTURE LIFT LPT DISK STG5", EquipmentEnum.IT,
-      "PM1", 2, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.CFM, "/assets/images/FIXTURE LIFT LPT DISK STG5.jpg")));
+      "PM1", 2, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.CFM, "/assets/images/FIXTURELIFTLPTDISKSTG5.jpg")));
 
     logger.info("test -> {}",equipmentRepository.insert1(new Equipment(145705,"FIXTURE LIFT TURNOVER LPT ROTOR DISKS", EquipmentEnum.I,
-      "PM1A", 2, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.CE9O, "/assets/images/FIXTURE LIFT TURNOVER LPT ROTOR DISKS.jpg")));
+      "PM1A", 2, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.CE9O, "/assets/images/FIXTURELIFTTURNOVERLPTROTORDISKS.jpg")));
 
     logger.info("test -> {}",equipmentRepository.insert1(new Equipment(165456,"TRANSPORT & STORAGE STAND LPT SHAFT", EquipmentEnum.I,
-      "PM2A", 2, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.CF6, "/assets/images/TRANSPORT & STORAGE STAND LPT SHAFT.jpg")));
+      "PM2A", 2, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.CF6, "/assets/images/TRANSPORTSTORAGESTANDLPTSHAFT.jpg")));
 
     logger.info("test -> {}",equipmentRepository.insert1(new Equipment(165457,"TRANSPORT & STORAGE STAND LPT SHAFT", EquipmentEnum.I,
-      "PM2A", 2, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.CF6, "/assets/images/TRANSPORT & STORAGE STAND LPT SHAFT.jpg")));
+      "PM2A", 2, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.CF6, "/assets/images/TRANSPORTSTORAGESTANDLPTSHAFT.jpg")));
 
 
 

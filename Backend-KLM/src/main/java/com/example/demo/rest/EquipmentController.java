@@ -31,7 +31,6 @@ public class EquipmentController {
   }
 
   @GetMapping("/rest/equipment/{id}")
-  @JsonView(DataView.DynamicFilter.class)
   public Equipment getEquipmentById(@PathVariable long id) {
     return equipmentRepository.findById(id);
   }
@@ -43,7 +42,6 @@ public class EquipmentController {
   }
 
   @PutMapping("/rest/equipment/{id}")
-  @JsonView(DataView.DynamicFilter.class)
   public Equipment update(@PathVariable long id) {
     Equipment equipment1 = equipmentRepository.findById(id);
 
