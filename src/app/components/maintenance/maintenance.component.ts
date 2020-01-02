@@ -33,6 +33,9 @@ export class MaintenanceComponent implements OnInit {
     this.equipmentService.getAllEquipment().subscribe(response =>{
       this.equipmentList = response;
       console.log(this.equipmentList);
+      for(let dept of this.equipmentList){
+        console.log(dept.department.departmentcode)
+      }
     });
   }
 

@@ -3,8 +3,6 @@ package com.example.demo.models;
 import com.example.demo.models.helper.DataView;
 import com.example.demo.models.helper.DepartmentEnum;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.Entity;
@@ -20,7 +18,6 @@ public class Department {
 
   @Id
   private DepartmentEnum departmentcode;
-
 
 
   @OneToMany(mappedBy = "department")

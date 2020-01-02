@@ -47,16 +47,16 @@ public class DemoApplication implements CommandLineRunner {
 
     // MotorType info invoeren
 
-    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.CE9O)));
-    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.CF6)));
-    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.CFM)));
-    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.GEnX)));
-    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.LEAP)));
+//    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.CE9O)));
+//    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.CF6)));
+//    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.CFM)));
+//    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.GEnX)));
+//    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.LEAP)));
 
     // Equipment info invoeren
 
     logger.info("test -> {}",equipmentRepository.insert1(new Equipment(107608,"BUILDUP STAND LPT -80C2", EquipmentEnum.I,
-      "PM2A", 1, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.CF6, "/assets/images/BUILDUP STAND LPT -80C2.jpg")));
+    "PM2A", 1, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.CF6, "/assets/images/BUILDUP STAND LPT -80C2.jpg")));
 
     logger.info("test -> {}",equipmentRepository.insert1(new Equipment(107651,"BUILDUP STAND LPT -80C2", EquipmentEnum.IT,
       "PM2A", 1, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.CF6, "/assets/images/BUILDUP STAND LPT -80C2.jpg")));

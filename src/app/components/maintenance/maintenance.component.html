@@ -50,34 +50,34 @@
       <tr *ngFor=" let equipmentss of equipmentList"
           [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}">
 
-        <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+        <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department.departmentcode == selectedDept.name && equipmentss.motorType == selectedMoto.name
         && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
           {{equipmentss.equipmentNr}}</td>
 
-        <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+        <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department.departmentcode == selectedDept.name && equipmentss.motorType == selectedMoto.name
         && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
           {{equipmentss.building}}</td>
 
-        <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+        <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department.departmentcode == selectedDept.name && equipmentss.motorType == selectedMoto.name
         && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
           {{equipmentss.hangar}}</td>
 
-        <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+        <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department.departmentcode == selectedDept.name && equipmentss.motorType == selectedMoto.name
         && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
           {{equipmentss.department}}</td>
 
-        <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+        <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department.departmentcode == selectedDept.name && equipmentss.motorType == selectedMoto.name
         && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
           {{equipmentss.userStatus}}</td>
 
-        <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+        <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department.departmentcode == selectedDept.name && equipmentss.motorType == selectedMoto.name
         && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr"
             [style.background-color]="equipmentService.color">{{equipmentss.code}}</td>
 
-        <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+        <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department.departmentcode == selectedDept.name && equipmentss.motorType == selectedMoto.name
         && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr">{{equipmentss.priority}}</td>
 
-        <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department == selectedDept.name && equipmentss.motorType == selectedMoto.name
+        <td *ngIf="equipmentss.userStatus != 'I' && equipmentss.department.departmentcode == selectedDept.name && equipmentss.motorType == selectedMoto.name
        && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr">
           <img class="imageClass" [src]="equipmentss.imageEquipment" alt="placeholder"/>
         </td>

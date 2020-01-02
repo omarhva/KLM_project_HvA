@@ -25,7 +25,7 @@ public class EquipmentController {
   }
 
   @GetMapping("/rest/equipment")
-  @JsonView(DataView.DynamicFilter.class)
+//  @JsonView(DataView.DynamicFilter.class)
   public List<Equipment> getAllEquipment() {
     return equipmentRepository.findAll();
   }
