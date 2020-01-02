@@ -72,7 +72,7 @@ public class DemoApplication implements CommandLineRunner {
       "PM2A", 1, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.GEnX, "/assets/images/BUILDUPSTANDLPT80E.jpg")));
 
     logger.info("test -> {}",equipmentRepository.insert1(new Equipment(119851,"BUILDUP STAND LPT -80E", EquipmentEnum.I,
-      "PM2A", 1, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.LEAP, "/assets/images/BUILDUP STANDLPT80E.jpg")));
+      "PM2A", 1, new Department(DepartmentEnum.LPT), "410", "10", MotorEnum.LEAP, "/assets/images/BUILDUPSTANDLPT80E.jpg")));
 
 
     logger.info("test -> {}",equipmentRepository.insert1(new Equipment(122075,"BUILDUP STAND LPT -80E", EquipmentEnum.I,
