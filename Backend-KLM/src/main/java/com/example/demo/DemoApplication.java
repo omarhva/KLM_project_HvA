@@ -33,6 +33,7 @@ public class DemoApplication implements CommandLineRunner {
   @Transactional
 
   public void run(String... args) throws Exception {
+
     logger.info("test1->{}", equipmentRepository.insert(new Department(DepartmentEnum.Core)));
     logger.info("test1->{}", equipmentRepository.insert(new Department(DepartmentEnum.CRF)));
     logger.info("test1->{}", equipmentRepository.insert(new Department(DepartmentEnum.Fan)));
@@ -43,11 +44,16 @@ public class DemoApplication implements CommandLineRunner {
     logger.info("test1->{}", equipmentRepository.insert(new Department(DepartmentEnum.LPT)));
     logger.info("test1->{}", equipmentRepository.insert(new Department(DepartmentEnum.LPC)));
 
+
+    logger.info("test1->{}", equipmentRepository.insert(new Department(DepartmentEnum.LPC)));
+
+
+
     logger.info("test -> {}",equipmentRepository.insert1(new Equipment(1,"BUILDUP STAND LPT -80C2", EquipmentEnum.I,
-      "PM2A", 1, new Department(DepartmentEnum.Core), "410", "10", MotorEnum.CF6, "/assets/images/BUILDUP STAND LPT -80C2.jpg")));
+      "PM2A", 1, new Department(DepartmentEnum.Core), "410", "10", MotorEnum.CF6, "/assets/images/BUILDUPSTANDLPT80C2.jpg")));
 
     logger.info("test -> {}",equipmentRepository.insert1(new Equipment(12,"BUILDUP STAND LPT -80C2", EquipmentEnum.I,
-      "PM2A", 1, new Department(DepartmentEnum.Motorline), "410", "10", MotorEnum.CF6, "/assets/images/BUILDUP STAND LPT -80C2.jpg")));
+      "PM2A", 1, new Department(DepartmentEnum.Motorline), "410", "10", MotorEnum.CF6, "/assets/images/BUILDUPSTANDLPT80C2.jpg")));
 
 //    createInitialAEvents();
 //    logger.info("All Aeventd ->{}", equipmentRepository.findAll());
@@ -60,11 +66,11 @@ public class DemoApplication implements CommandLineRunner {
 //
 //  equipmentList = new ArrayList<>();
 //    equipmentList.add(new Equipment(107608, "BUILDUP STAND LPT -80C2", EquipmentEnum.I,
-//      "PM2A", 0, "LPT", "410", "10", MotorEnum.CF6, "/assets/images/BUILDUP STAND LPT -80C2.jpg"));
+//      "PM2A", 0, "LPT", "410", "10", MotorEnum.CF6, "/assets/images/BUILDUPSTANDLPT80C2.jpg"));
 //
 ////
 ////    this.equipmentList.add(new Equipment(107608, "BUILDUP STAND LPT -80C2", EquipmentEnum.I,
-////      "PM2A", 0, "LPT", "410", "10", MotorEnum.CF6, "/assets/images/BUILDUP STAND LPT -80C2.jpg"));
+////      "PM2A", 0, "LPT", "410", "10", MotorEnum.CF6, "/assets/images/BUILDUPSTANDLPT80C2.jpg"));
 
 
   }

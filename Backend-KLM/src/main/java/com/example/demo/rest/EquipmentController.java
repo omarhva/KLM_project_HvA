@@ -33,8 +33,7 @@ public class EquipmentController {
   @GetMapping("/rest/equipment/{id}")
   @JsonView(DataView.DynamicFilter.class)
   public Equipment getEquipmentById(@PathVariable long id) {
-    Equipment equipment = equipmentRepository.findById(id);
-    return equipment;
+    return equipmentRepository.findById(id);
   }
 
 
