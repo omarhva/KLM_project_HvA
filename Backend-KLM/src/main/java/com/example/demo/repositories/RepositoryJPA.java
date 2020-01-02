@@ -2,6 +2,7 @@ package com.example.demo.repositories;
 
 import com.example.demo.models.Department;
 import com.example.demo.models.Equipment;
+import com.example.demo.models.MotorType;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
@@ -49,5 +50,9 @@ public class RepositoryJPA implements EquipmentRepository {
   }
   public Department insert(Department department) {
     return em.merge(department);
+  }
+
+  public MotorType insert(MotorType motorType) {
+    return em.merge(motorType);
   }
 }
