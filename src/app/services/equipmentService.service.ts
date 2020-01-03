@@ -80,6 +80,17 @@ export class EquipmentService {
     return this.serverService.get<EquipmentModel[]>("http://localhost:8085/rest/equipment/unique")
   }
 
+  updateUnqiueEquipment(repairedEquipment: EquipmentModel) {
+    this.serverService.put("http://localhost:8085/rest/equipment/" + repairedEquipment.equipmentNr,
+      repairedEquipment).subscribe(response => {
+        console.log(response);
+    })
+    alert("Reload the page to see the updated list")
+  }
+
+
+
+
   getQuantity() {
 
 

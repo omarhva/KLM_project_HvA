@@ -10,6 +10,7 @@ import {Motortypes} from "./mock/mock-motortype";
 
 import {ModalService} from "../../../_modal";
 import {ServicefbService} from "../../services/servicefb.service";
+import {Set} from "typescript-collections";
 
 @Component({
   selector: 'app-mechanic',
@@ -44,6 +45,7 @@ export class MechanicComponent implements OnInit {
 
     this.equipmentService.getUnqiueEquipment().subscribe(response =>{
       this.equipmentList = response;
+
       console.log(this.equipmentList);
     });
 

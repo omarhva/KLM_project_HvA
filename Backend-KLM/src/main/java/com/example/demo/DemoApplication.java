@@ -47,11 +47,11 @@ public class DemoApplication implements CommandLineRunner {
 
     // MotorType info invoeren
 
-//    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.CE9O)));
-//    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.CF6)));
-//    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.CFM)));
-//    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.GEnX)));
-//    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.LEAP)));
+    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.CE9O)));
+    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.CF6)));
+    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.CFM)));
+    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.GEnX)));
+    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.LEAP)));
 
     // Equipment info invoeren
 
