@@ -30,7 +30,7 @@ public class Department {
   }
 
 
-  @OneToMany(mappedBy = "department1")
+  @OneToMany(mappedBy = "department")
   @JsonBackReference
   @JsonView(DataView.DynamicFilter.class)
   public List<MotorType> motorTypes = new ArrayList<>();

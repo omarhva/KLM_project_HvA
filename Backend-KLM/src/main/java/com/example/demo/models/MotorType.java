@@ -14,17 +14,17 @@ import java.util.Objects;
 public class MotorType {
   @Id
   private MotorEnum motorEnum;
-
+  @ManyToOne
+  @JsonManagedReference
+  @JsonView(DataView.DynamicFilter.class)
+  public Department department;
   public MotorType(MotorEnum motorEnum) {
     this.motorEnum=motorEnum;
   }
   public MotorType() {}
 
 
-  @ManyToOne
-  @JsonManagedReference
-  @JsonView(DataView.DynamicFilter.class)
-  public Department department1;
+
 
   public MotorEnum getMotorEnum() {
     return motorEnum;
