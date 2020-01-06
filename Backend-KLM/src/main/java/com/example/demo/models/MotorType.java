@@ -7,13 +7,29 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 public class MotorType {
   @Id
   private MotorEnum motorEnum;
+  @ManyToOne
+  @JsonManagedReference
+  @JsonView(DataView.DynamicFilter.class)
+  public Department department;
+
+
+  @ManyToMany
+  @JsonManagedReference
+  @JsonView
+  public List<Equipment> equipment = new ArrayList<>();
+
+
+
 
   public MotorType(MotorEnum motorEnum) {
     this.motorEnum=motorEnum;
@@ -21,10 +37,7 @@ public class MotorType {
   public MotorType() {}
 
 
-  @ManyToOne
-  @JsonManagedReference
-  @JsonView(DataView.DynamicFilter.class)
-  public Department department1;
+
 
   public MotorEnum getMotorEnum() {
     return motorEnum;
@@ -32,6 +45,15 @@ public class MotorType {
 
   public void setMotorEnum(MotorEnum motorEnum) {
     this.motorEnum = motorEnum;
+  }
+
+
+  public List<Equipment> getEquipment() {
+    return equipment;
+  }
+
+  public void setEquipment(List<Equipment> equipment) {
+    this.equipment = equipment;
   }
 
   @Override

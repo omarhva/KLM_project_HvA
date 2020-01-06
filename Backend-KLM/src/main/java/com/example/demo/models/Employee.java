@@ -1,11 +1,15 @@
 package com.example.demo.models;
 
 
+import com.example.demo.models.helper.DataView;
 import com.example.demo.models.helper.EmployeeEnum;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Employee {
@@ -15,6 +19,11 @@ public class Employee {
   private EmployeeEnum employeeEnum;
   private boolean isAdmin;
   private long password;
+
+  @ManyToOne
+  @JsonManagedReference
+  @JsonView(DataView.DynamicFilter.class)
+  public Department department;
 
   public Employee(){
 

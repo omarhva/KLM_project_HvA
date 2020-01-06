@@ -82,10 +82,15 @@ export class GeneralComponent implements OnInit {
 
         this.equipmentService.buildingModal = this.equipmentList[i].building;
         this.equipmentService.hangar = this.equipmentList[i].hangar;
-        this.equipmentService.departmentModal = this.equipmentList[i].department;
+        // @ts-ignore
+        this.equipmentService.departmentModal = this.equipmentList[i].department.departmentcode;
+
       }
+
+
     }
     console.log(this.equipmentService.equipmentNr);
+    this.equipmentService.selectedEquipment = selectedEquipment;
     return selectedEquipment;
   }
 

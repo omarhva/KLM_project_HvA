@@ -14,11 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Primary;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
@@ -47,11 +45,11 @@ public class DemoApplication implements CommandLineRunner {
 
     // MotorType info invoeren
 
-//    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.CE9O)));
-//    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.CF6)));
-//    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.CFM)));
-//    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.GEnX)));
-//    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.LEAP)));
+    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.CE9O)));
+    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.CF6)));
+    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.CFM)));
+    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.GEnX)));
+    logger.info("test1->{}", equipmentRepository.insert(new MotorType(MotorEnum.LEAP)));
 
     // Equipment info invoeren
 

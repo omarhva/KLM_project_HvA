@@ -1,4 +1,6 @@
-export class EquipmentModel {
+import {CommonModule} from "@angular/common";
+
+export class EquipmentModel{
 
   public equipmentNr: number;
   public objectDescription: string;
@@ -33,6 +35,12 @@ export class EquipmentModel {
     this.filterLocation = true;
     this.imageEquipment = imageEquipment;
   }
+
+  equalTo(equipment: EquipmentModel): boolean {
+    return this.objectDescription == equipment.objectDescription;
+  }
+
+
 
 
 }

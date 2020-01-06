@@ -10,6 +10,8 @@ import {Motortypes} from "./mock/mock-motortype";
 
 import {ModalService} from "../../../_modal";
 import {ServicefbService} from "../../services/servicefb.service";
+import {Set} from "typescript-collections";
+import {forEach} from "typescript-collections/dist/lib/arrays";
 
 @Component({
   selector: 'app-mechanic',
@@ -24,6 +26,10 @@ export class MechanicComponent implements OnInit {
   public searchFieldLocation;
   public searchFieldEquipmentNr;
   public showTable: Boolean;
+
+
+  public uniqueEquipmentList: EquipmentModel[] = [];
+
 
 
   listDepartments = Departments;
@@ -44,7 +50,28 @@ export class MechanicComponent implements OnInit {
 
     this.equipmentService.getUnqiueEquipment().subscribe(response =>{
       this.equipmentList = response;
+
       console.log(this.equipmentList);
+
+      for (let i of this.equipmentList) {
+
+        console.log(i.objectDescription + " " + i.motorType );
+
+      }
+
+      console.log("======================================");
+      this.uniqueEquipmentList = this.removeDuplicates();
+
+
+
+
+      console.log(this.uniqueEquipmentList);
+
+
+
+
+
+
     });
 
     this.showTable = true;
@@ -52,6 +79,8 @@ export class MechanicComponent implements OnInit {
     this.searchFieldLocation = new FormControl();
     this.searchFieldEquipmentNr= new FormControl();
   }
+
+
 
 
   onSelect(dept: Dept): void {
@@ -72,6 +101,24 @@ export class MechanicComponent implements OnInit {
     console.log("Value motortype: " + motorT.name);
   }
 
+  removeDuplicates() {
+    return this.equipmentList.filter((equipment,index,list) =>
+      list.findIndex(t=>(t.objectDescription === equipment.objectDescription
+        && t.motorType===equipment.motorType)) === index);
+
+  }
+  countFrequency(selectedEquipment:EquipmentModel){
+
+
+      for (let i = 0; i <this.equipmentList.length ; i++) {
+        if (this.equipmentList[i].objectDescription == selectedEquipment.objectDescription
+          && this.equipmentList[i].motorType == selectedEquipment.motorType){
+          this.equipmentService.frequency++;
+        }
+      }
+  }
+
+
   onSelectList(selectedEquipment: EquipmentModel){
     for (let i = 0; i < this.equipmentList.length; i++){
       if (this.equipmentList[i].equipmentNr == selectedEquipment.equipmentNr){
@@ -84,6 +131,8 @@ export class MechanicComponent implements OnInit {
         this.equipmentService.hangar = this.equipmentList[i].hangar;
         // @ts-ignore
         this.equipmentService.departmentModal = this.equipmentList[i].department.departmentcode;
+        this.countFrequency(selectedEquipment);
+        console.log(this.equipmentService.frequency);
 
       }
 

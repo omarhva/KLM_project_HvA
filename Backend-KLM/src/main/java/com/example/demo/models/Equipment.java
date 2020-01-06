@@ -8,12 +8,14 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="EquipmentType")
 public class Equipment {
 
   @Id
@@ -31,8 +33,12 @@ public class Equipment {
   private String building;
   @JsonView(DataView.DynamicFilter.class)
   private String hangar;
+
   @JsonView(DataView.DynamicFilter.class)
   private MotorEnum motorType;
+
+
+
   @JsonView(DataView.DynamicFilter.class)
   private String imageEquipment;
 
@@ -47,11 +53,18 @@ public class Equipment {
   @JsonView(DataView.DynamicFilter.class)
   public Department department;
 
+
+//  @ManyToMany
+//  @JsonManagedReference
+//  @JsonView(DataView.DynamicFilter.class)
+//  private List<MotorType> motorType = new ArrayList<>();
+
   public Equipment() {
 
   }
 
-  public Equipment(int equipmentNr, String objectDescription, EquipmentEnum userStatus, String code, int priority, Department department, String building, String hangar, MotorEnum motorType, String imageEquipment) {
+  public Equipment(int equipmentNr, String objectDescription, EquipmentEnum userStatus, String code, int priority,
+                   Department department, String building, String hangar, MotorEnum motorType, String imageEquipment) {
     this.equipmentNr = equipmentNr;
     this.objectDescription = objectDescription;
     this.userStatus = userStatus;
@@ -152,14 +165,6 @@ public class Equipment {
 
   public void setHangar(String hangar) {
     this.hangar = hangar;
-  }
-
-  public MotorEnum getMotorType() {
-    return motorType;
-  }
-
-  public void setMotorType(MotorEnum motorType) {
-    this.motorType = motorType;
   }
 
   public boolean isFilterEquipDescription() {
