@@ -35,6 +35,11 @@ public class Department {
   @JsonView(DataView.DynamicFilter.class)
   public List<MotorType> motorTypes = new ArrayList<>();
 
+  @OneToMany(mappedBy = "department")
+  @JsonBackReference
+  @JsonView(DataView.DynamicFilter.class)
+  public List<Employee> employees = new ArrayList<>();
+
   public List<MotorType> getMotorTypes() {
     return motorTypes;
   }

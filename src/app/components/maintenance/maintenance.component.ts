@@ -26,7 +26,6 @@ export class MaintenanceComponent implements OnInit {
 
 
   constructor(private equipmentService: EquipmentService, private auth: ServicefbService) {
-    this.equipmentList = this.equipmentService.getEquipmentList();
   }
 
   ngOnInit() {
@@ -46,9 +45,6 @@ export class MaintenanceComponent implements OnInit {
     console.log("Value motortype: " + motorT.name);
   }
 
-  repaired(index: number) {
-    alert("The equipment is repaired");
-    this.equipmentService.getEquipmentList().splice(index, 1);
-  }
+
 
 }

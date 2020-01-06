@@ -39,7 +39,7 @@
     <div class="wrapsearchfields">
 
       <label>
-        <input id="searchEquipmentNr" [formControl]="searchFieldEquipmentNr"
+        <input  type=number id="searchEquipmentNr" [formControl]="searchFieldEquipmentNr"
                (change)="filterOnEquipmentNr(searchFieldEquipmentNr.value)" placeholder="equipment number">
       </label>
       <button id="buttonEquipmentNr" class="buttonSearch" (click)="filterOnEquipmentNr(searchFieldEquipmentNr.value)">

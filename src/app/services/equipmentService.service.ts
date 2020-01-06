@@ -45,7 +45,8 @@ export class EquipmentService {
       repairedEquipment).subscribe(response => {
       console.log(response);
     });
-    alert("Reload the page to see the updated list")
+    alert("Equipment is marked as repaired");
+    window.location.reload()
   }
 
 
