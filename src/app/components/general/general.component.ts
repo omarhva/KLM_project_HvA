@@ -31,7 +31,6 @@ export class GeneralComponent implements OnInit {
   selectedMoto: MotorT;
 
 
-
   constructor(private equipmentService: EquipmentService, private modalService: ModalService, private auth: ServicefbService) {
 
 
@@ -39,7 +38,7 @@ export class GeneralComponent implements OnInit {
 
   ngOnInit() {
 
-    this.equipmentService.getAllEquipment().subscribe(response =>{
+    this.equipmentService.getAllEquipment().subscribe(response => {
       this.equipmentList = response;
       console.log(this.equipmentList);
     });
@@ -47,7 +46,7 @@ export class GeneralComponent implements OnInit {
     this.showTable = true;
     this.searchFieldEquipment = new FormControl();
     this.searchFieldLocation = new FormControl();
-    this.searchFieldEquipmentNr= new FormControl();
+    this.searchFieldEquipmentNr = new FormControl();
   }
 
 
@@ -56,14 +55,16 @@ export class GeneralComponent implements OnInit {
     console.log("Value department: " + dept.name);
   }
 
-  onClickList(){
+  onClickList() {
 
   }
+
   /*-----------------------MODAL STUFF------------------------*/
   openModal(id: string) {
     this.modalService.open(id);
 
   }
+
   /*---------------------------------------------------------*/
 
 
@@ -72,9 +73,9 @@ export class GeneralComponent implements OnInit {
     console.log("Value motortype: " + motorT.name);
   }
 
-  onSelectList(selectedEquipment: EquipmentModel){
-    for (let i = 0; i < this.equipmentList.length; i++){
-      if (this.equipmentList[i].equipmentNr == selectedEquipment.equipmentNr){
+  onSelectList(selectedEquipment: EquipmentModel) {
+    for (let i = 0; i < this.equipmentList.length; i++) {
+      if (this.equipmentList[i].equipmentNr == selectedEquipment.equipmentNr) {
 
         this.equipmentService.equipmentNr = this.equipmentList[i].equipmentNr;
         this.equipmentService.description = this.equipmentList[i].objectDescription;
@@ -109,6 +110,7 @@ export class GeneralComponent implements OnInit {
       }
     }
   }
+
 // Filter on equipment location on enter
   filterOnEquipmentLocation(equip: string) {
     for (let x of this.equipmentList) {
