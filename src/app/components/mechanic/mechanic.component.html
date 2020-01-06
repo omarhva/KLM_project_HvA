@@ -98,6 +98,11 @@
         <img class="imageClass"  [src]="equipmentss.imageEquipment" alt="placeholder"/>
       </td>
 
+      <button *ngIf="equipmentss.userStatus == 'I' && equipmentss.department.departmentcode == selectedDept.name && equipmentss.motorType == selectedMoto.name
+                && equipmentss.filterEquipDescription && equipmentss.filterLocation && equipmentss.filterEquipmentNr"
+              class=" repairBtn btn-dark" (click)="equipmentService.inUseUnqiueEquipment(equipmentss)">Use
+      </button>
+
       <jw-modal id="blueprint">
         <app-modal-home></app-modal-home>
       </jw-modal>

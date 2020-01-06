@@ -51,6 +51,16 @@ public class EquipmentController {
     return equipment1;
   }
 
+  @PutMapping("/rest/equipment/inUse/{id}")
+  public Equipment inUse(@PathVariable long id) {
+    Equipment equipment1 = equipmentRepository.findById(id);
+
+    equipment1.setUserStatus(EquipmentEnum.O);
+    equipmentRepository.save(equipment1);
+
+    return equipment1;
+  }
+
   public Equipment findById(long id) {
     return null;
   }
