@@ -18,6 +18,8 @@ import {ModalModule} from "../_modal";
 import { ModalHomeComponent } from './components/mechanic/modal-home/modal-home.component';
 import { ModalDetailComponent } from './components/mechanic/modal-detail/modal-detail.component';
 import {HttpClientModule} from "@angular/common/http";
+import { ModalDetailGeneralComponent } from './components/general/modal-detail-general/modal-detail-general.component';
+import { ModalHomeGeneralComponent } from './components/general/modal-home-general/modal-home-general.component';
 
 
 
@@ -34,6 +36,9 @@ import {HttpClientModule} from "@angular/common/http";
     ErrorPageComponent,
     ModalHomeComponent,
     ModalDetailComponent,
+    ModalDetailGeneralComponent,
+    ModalHomeGeneralComponent,
+
 
 
 

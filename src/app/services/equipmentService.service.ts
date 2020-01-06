@@ -50,12 +50,10 @@ export class EquipmentService {
   }
 
   inUseUnqiueEquipment(useEquipment: EquipmentModel) {
-    this.serverService.put("http://localhost:8085/rest/equipment/inUse/" + useEquipment.equipmentNr,
-      useEquipment).subscribe(response => {
-      console.log(response);
-    });
     alert("Equipment is marked as in use");
-    window.location.reload()
+    return this.serverService.put("http://localhost:8085/rest/equipment/inUse/" + useEquipment.equipmentNr,
+      useEquipment);
+
   }
 
 

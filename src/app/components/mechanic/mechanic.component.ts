@@ -27,8 +27,7 @@ export class MechanicComponent implements OnInit {
   public searchFieldEquipmentNr;
   public showTable: Boolean;
 
-
-  public uniqueEquipmentList: EquipmentModel[] = [];
+  public mapEquipment = [];
 
 
 
@@ -53,24 +52,7 @@ export class MechanicComponent implements OnInit {
 
       console.log(this.equipmentList);
 
-      for (let i of this.equipmentList) {
-
-        console.log(i.objectDescription + " " + i.motorType );
-
-      }
-
-      console.log("======================================");
-      this.uniqueEquipmentList = this.removeDuplicates();
-
-
-
-
-      console.log(this.uniqueEquipmentList);
-
-
-
-
-
+      this.removeDuplicates();
 
     });
 
@@ -101,10 +83,40 @@ export class MechanicComponent implements OnInit {
     console.log("Value motortype: " + motorT.name);
   }
 
+  // inUseUnqiueEquipment(useEquipment: EquipmentModel) {
+  //   this.equipmentService.inUseUnqiueEquipment(useEquipment).subscribe(response => {
+  //     console.log(response);
+  //     for (let i = 0; i < this.equipmentList.length ; i++) {
+  //
+  //       if (this.equipmentList[i].equipmentNr == response['equipmentNr']){
+  //         console.log(this.equipmentList[i]);
+  //         this.equipmentList.splice(i,1);
+  //         break;
+  //       }
+  //
+  //     }
+  //     this.removeDuplicates()
+  //   });
+  //
+  // }
+
   removeDuplicates() {
-    return this.equipmentList.filter((equipment,index,list) =>
-      list.findIndex(t=>(t.objectDescription === equipment.objectDescription
-        && t.motorType===equipment.motorType)) === index);
+    console.log(this.equipmentList);
+    for (let i = 0; i < this.equipmentList.length ; i++) {
+
+      const key =  this.equipmentList[i].objectDescription + this.equipmentList[i].motorType;
+      console.log('key',key);
+      if (this.mapEquipment[key]){
+        console.log('exists');
+        this.mapEquipment[key].push(this.equipmentList[i])
+      } else{
+        this.mapEquipment[key] = [this.equipmentList[i]];
+      }
+
+
+    }
+
+    console.log('Map',this.mapEquipment);
 
   }
   countFrequency(selectedEquipment:EquipmentModel){
