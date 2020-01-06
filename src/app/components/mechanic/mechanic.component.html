@@ -74,7 +74,7 @@
 
     </thead>
     <tbody>
-    <tr *ngFor=" let equipmentss of this.equipmentList"
+    <tr *ngFor=" let equipmentss of this.uniqueEquipmentList"
         [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.code)}"
         (click)="openModal('blueprint'); onSelectList(equipmentss)">
 
