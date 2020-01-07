@@ -5,115 +5,131 @@
 </div>
 
 <div *ngIf="auth.returncurrentUser() != null">
-<h2>Choose a department</h2>
-<div class="wrapbox">
-  <ul class="motortypes">
-    <li *ngFor="let dept of listDepartments"
-        [class.selected]="dept === selectedDept"
-        (click)="onSelect(dept)">
-      {{dept.name}}
-    </li>
-  </ul>
-</div>
+  <h2>Choose a department</h2>
+  <div class="wrapbox">
+    <ul class="motortypes">
+      <li *ngFor="let dept of listDepartments"
+          [class.selected]="dept === selectedDept"
+          (click)="onSelect(dept)">
+        {{dept.name}}
+      </li>
+    </ul>
+  </div>
 
-<div *ngIf="selectedDept">
-  <h2>Choose a motortype</h2>
-  <div class="wrapbox2">
+  <div *ngIf="selectedDept">
+    <h2>Choose a motortype</h2>
+    <div class="wrapbox2">
 
-    <div *ngIf="selectedDept">
-      <ul class="motortypes">
-        <li *ngFor="let motorT of listMotortypes"
-            [class.selected]="motorT === selectedMoto"
-            (click)="onSelectMotor(motorT)">
-          {{motorT.name}}
-        </li>
-      </ul>
+      <div *ngIf="selectedDept">
+        <ul class="motortypes">
+          <li *ngFor="let motorT of listMotortypes"
+              [class.selected]="motorT === selectedMoto"
+              (click)="onSelectMotor(motorT)">
+            {{motorT.name}}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
 
-<div *ngIf="selectedMoto">
+  <div *ngIf="selectedMoto">
 
-  <table class="table table-bordered">
-    <thead class="thead-dark">
-    <div class="wrapsearchfields">
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+      <div class="wrapsearchfields">
 
-      <label>
-        <input  type=number id="searchEquipmentNr" [formControl]="searchFieldEquipmentNr"
-               (change)="filterOnEquipmentNr(searchFieldEquipmentNr.value)" placeholder="equipment number">
-      </label>
-      <button id="buttonEquipmentNr" class="buttonSearch" (click)="filterOnEquipmentNr(searchFieldEquipmentNr.value)">
-        Search
-      </button>
+        <label>
+          <input type=number id="searchEquipmentNr" [formControl]="searchFieldEquipmentNr"
+                 (change)="filterOnEquipmentNr(searchFieldEquipmentNr.value)" placeholder="equipment number">
+        </label>
+        <button id="buttonEquipmentNr" class="buttonSearch" (click)="filterOnEquipmentNr(searchFieldEquipmentNr.value)">
+          Search
+        </button>
 
-      <label>
-        <input id="sercheq"  class="searchEquipment" [formControl]="searchFieldEquipment"
-               (change)="filterOnEquipmentDescription(searchFieldEquipment.value)" placeholder="equipment description">
-      </label>
-      <button id="buttonEquipment" class="buttonSearch"
-              (click)="filterOnEquipmentDescription(searchFieldEquipment.value)">Search
-      </button>
+        <label>
+          <input id="sercheq" class="searchEquipment" [formControl]="searchFieldEquipment"
+                 (change)="filterOnEquipmentDescription(searchFieldEquipment.value)"
+                 placeholder="equipment description">
+        </label>
+        <button id="buttonEquipment" class="buttonSearch"
+                (click)="filterOnEquipmentDescription(searchFieldEquipment.value)">Search
+        </button>
 
-      <label>
-        <input id="searchLocation" [formControl]="searchFieldLocation" placeholder="location">
-      </label>
-      <button id="buttonLocation" class="buttonSearch" (click)="filterOnEquipmentLocation(searchFieldLocation.value)">
-        Search
-      </button>
+        <label>
+          <input id="searchLocation" [formControl]="searchFieldLocation" placeholder="location">
+        </label>
+        <button id="buttonLocation" class="buttonSearch" (click)="filterOnEquipmentLocation(searchFieldLocation.value)">
+          Search
+        </button>
 
-    </div>
-
-
-    <tr>
-      <th  style="width: 10%">Equipment number</th>
-      <th  style="width: 45%">Equipment description</th>
-      <th  style="width: 15%">Location</th>
-      <th  style="width: 20%">Image</th>
-    </tr>
+      </div>
 
 
-    </thead>
-    <tbody>
-    <tr *ngFor=" let equipmentss of this.mapEquipment | keyvalue"
-        [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.value[0].code)}"
-        (click)="openModal('blueprint'); onSelectList(equipmentss.value[0])">
+      <tr>
+        <th style="width: 10%">Equipment number</th>
+        <th style="width: 45%">Equipment description</th>
+        <th style="width: 15%">Location</th>
+        <th style="width: 5%">Quantity</th>
+        <th style="width: 20%">Image</th>
+      </tr>
 
-      <td
-        *ngIf="equipmentss.value[0].userStatus == 'I' && equipmentss.value[0].department.departmentcode == selectedDept.name
+
+      </thead>
+      <tbody>
+      <tr *ngFor=" let equipmentss of this.mapEquipment | keyvalue"
+          [ngClass]="{equipmentCode: equipmentService.checkCode(equipmentss.value[0].code)}"
+          (click)="onSelectList(equipmentss.value[0])">
+
+        <td (click)="openModal('blueprint');"
+          *ngIf="equipmentss.value[0].userStatus == 'I' && equipmentss.value[0].department.departmentcode == selectedDept.name
          && equipmentss.value[0].motorType == selectedMoto.name
-        && equipmentss.value[0].filterEquipDescription && equipmentss.value[0].filterLocation && equipmentss.value[0].filterEquipmentNr">
-        {{equipmentss.value[0].equipmentNr}}
-      </td>
-      <td
-        *ngIf="equipmentss.value[0].userStatus == 'I' && equipmentss.value[0].department.departmentcode == selectedDept.name
+        && equipmentss.value[0].filterEquipDescription && equipmentss.value[0].filterLocation && equipmentss.value[0].filterEquipmentNr
+        && equipmentss.value['length'] > 0">
+          {{equipmentss.value[0].equipmentNr}}
+        </td>
+        <td (click)="openModal('blueprint');"
+          *ngIf="equipmentss.value[0].userStatus == 'I' && equipmentss.value[0].department.departmentcode == selectedDept.name
          && equipmentss.value[0].motorType == selectedMoto.name
-        && equipmentss.value[0].filterEquipDescription && equipmentss.value[0].filterLocation && equipmentss.value[0].filterEquipmentNr">
-        {{equipmentss.value[0].objectDescription}}
-      </td>
-      <td
-        *ngIf="equipmentss.value[0].userStatus == 'I' && equipmentss.value[0].department.departmentcode == selectedDept.name
+        && equipmentss.value[0].filterEquipDescription && equipmentss.value[0].filterLocation && equipmentss.value[0].filterEquipmentNr
+        && equipmentss.value['length'] > 0">
+          {{equipmentss.value[0].objectDescription}}
+        </td>
+        <td (click)="openModal('blueprint');"
+          *ngIf="equipmentss.value[0].userStatus == 'I' && equipmentss.value[0].department.departmentcode == selectedDept.name
          && equipmentss.value[0].motorType == selectedMoto.name
-        && equipmentss.value[0].filterEquipDescription && equipmentss.value[0].filterLocation && equipmentss.value[0].filterEquipmentNr">
-        {{equipmentss.value[0].building + equipmentss.value[0].hangar + " " + equipmentss.value[0].department.departmentcode}}
-      </td>
-      <td *ngIf="equipmentss.value[0].userStatus == 'I' && equipmentss.value[0].department.departmentcode == selectedDept.name
-         && equipmentss.value[0].motorType == selectedMoto.name
-        && equipmentss.value[0].filterEquipDescription && equipmentss.value[0].filterLocation && equipmentss.value[0].filterEquipmentNr">
-        <img class="imageClass"  [src]="equipmentss.value[0].imageEquipment" alt="placeholder"/>
-      </td>
+        && equipmentss.value[0].filterEquipDescription && equipmentss.value[0].filterLocation && equipmentss.value[0].filterEquipmentNr
+        && equipmentss.value['length'] > 0">
+          {{equipmentss.value[0].building + equipmentss.value[0].hangar + " " + equipmentss.value[0].department.departmentcode}}
+        </td>
 
-      <button *ngIf="equipmentss.value[0].userStatus == 'I' && equipmentss.value[0].department.departmentcode == selectedDept.name
+        <td (click)="openModal('blueprint');"
+          *ngIf="equipmentss.value[0].userStatus == 'I' && equipmentss.value[0].department.departmentcode == selectedDept.name
          && equipmentss.value[0].motorType == selectedMoto.name
-        && equipmentss.value[0].filterEquipDescription && equipmentss.value[0].filterLocation && equipmentss.value[0].filterEquipmentNr"
-              class=" repairBtn btn-dark">Use
-      </button>
+        && equipmentss.value[0].filterEquipDescription && equipmentss.value[0].filterLocation && equipmentss.value[0].filterEquipmentNr
+        && equipmentss.value['length'] > 0">
+          {{equipmentss.value['length']}}
+        </td>
+        <td (click)="openModal('blueprint');"
+          *ngIf="equipmentss.value[0].userStatus == 'I' && equipmentss.value[0].department.departmentcode == selectedDept.name
+         && equipmentss.value[0].motorType == selectedMoto.name
+        && equipmentss.value[0].filterEquipDescription && equipmentss.value[0].filterLocation && equipmentss.value[0].filterEquipmentNr
+        && equipmentss.value['length'] > 0">
+          <img class="imageClass" [src]="equipmentss.value[0].imageEquipment" alt="placeholder"/>
+        </td>
 
-      <jw-modal id="blueprint">
-        <app-modal-home></app-modal-home>
-      </jw-modal>
+        <button *ngIf="equipmentss.value[0].userStatus == 'I' && equipmentss.value[0].department.departmentcode == selectedDept.name
+         && equipmentss.value[0].motorType == selectedMoto.name
+        && equipmentss.value[0].filterEquipDescription && equipmentss.value[0].filterLocation && equipmentss.value[0].filterEquipmentNr
+        && equipmentss.value['length'] > 0" class="repairBtn btn-dark" (click)="inUseUniqueEquipment(equipmentss.value[0])">
+          Use
+        </button>
 
-    </tr>
-    </tbody>
-  </table>
-</div>
+        <jw-modal id="blueprint">
+          <app-modal-home></app-modal-home>
+        </jw-modal>
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

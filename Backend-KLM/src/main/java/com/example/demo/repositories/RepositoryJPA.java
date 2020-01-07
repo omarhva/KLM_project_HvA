@@ -36,7 +36,7 @@ public class RepositoryJPA implements EquipmentRepository {
 
   @Override
   public Equipment save(Equipment equipment) {
-    return this.em.merge(equipment) ;
+    return this.em.merge(equipment);
   }
 
   @Override

@@ -45,6 +45,12 @@ export class MaintenanceComponent implements OnInit {
     console.log("Value motortype: " + motorT.name);
   }
 
+  updateUnqiueEquipment(repairedEquipment: EquipmentModel) {
+     this.equipmentService.updateUnqiueEquipment(repairedEquipment).subscribe(response =>{
+     })
+  }
+
+
 
 
 }

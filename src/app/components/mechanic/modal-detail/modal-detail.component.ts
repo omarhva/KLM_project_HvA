@@ -22,7 +22,6 @@ export class ModalDetailComponent implements OnInit {
 
   closeModal(id: string) {
     this.modalService.close(id);
-    this.equipmentService.frequency = 0;
   }
 
 }

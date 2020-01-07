@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, } from '@angular/core';
 import {EquipmentService} from "../../services/equipmentService.service";
 import {EquipmentModel} from "../../models/equipmentModel";
 import {FormControl} from "@angular/forms";
@@ -10,8 +10,7 @@ import {Motortypes} from "./mock/mock-motortype";
 
 import {ModalService} from "../../../_modal";
 import {ServicefbService} from "../../services/servicefb.service";
-import {Set} from "typescript-collections";
-import {forEach} from "typescript-collections/dist/lib/arrays";
+
 
 @Component({
   selector: 'app-mechanic',
@@ -34,7 +33,6 @@ export class MechanicComponent implements OnInit {
   listDepartments = Departments;
   selectedDept: Dept;
 
-
   listMotortypes = Motortypes;
   selectedMoto: MotorT;
 
@@ -45,16 +43,17 @@ export class MechanicComponent implements OnInit {
 
   }
 
+
+
   ngOnInit() {
 
     this.equipmentService.getUnqiueEquipment().subscribe(response =>{
       this.equipmentList = response;
-
-      console.log(this.equipmentList);
-
-      this.removeDuplicates();
+      this.makeMap();
 
     });
+
+
 
     this.showTable = true;
     this.searchFieldEquipment = new FormControl();
@@ -64,10 +63,8 @@ export class MechanicComponent implements OnInit {
 
 
 
-
   onSelect(dept: Dept): void {
     this.selectedDept = dept;
-    console.log("Value department: " + dept.name);
   }
 
   /*-----------------------MODAL STUFF------------------------*/
@@ -80,36 +77,37 @@ export class MechanicComponent implements OnInit {
 
   onSelectMotor(motorT: MotorT) {
     this.selectedMoto = motorT;
-    console.log("Value motortype: " + motorT.name);
   }
 
-  // inUseUnqiueEquipment(useEquipment: EquipmentModel) {
-  //   this.equipmentService.inUseUnqiueEquipment(useEquipment).subscribe(response => {
-  //     console.log(response);
-  //     for (let i = 0; i < this.equipmentList.length ; i++) {
-  //
-  //       if (this.equipmentList[i].equipmentNr == response['equipmentNr']){
-  //         console.log(this.equipmentList[i]);
-  //         this.equipmentList.splice(i,1);
-  //         break;
-  //       }
-  //
-  //     }
-  //     this.removeDuplicates()
-  //   });
-  //
-  // }
+  inUseUniqueEquipment(useEquipment: EquipmentModel) {
+    this.equipmentService.inUseUnqiueEquipment(useEquipment).subscribe(response => {
+      const key = response['objectDescription'] + response['motorType'] + response['department']['departmentcode'];
+      for (let x of this.mapEquipment[key]){
+        if (response['equipmentNr'] == x.equipmentNr){
+          this.mapEquipment[key].splice(x,1);
+        }
+      }
 
-  removeDuplicates() {
-    console.log(this.equipmentList);
+
+
+    });
+
+
+
+  }
+
+  makeMap() {
     for (let i = 0; i < this.equipmentList.length ; i++) {
 
-      const key =  this.equipmentList[i].objectDescription + this.equipmentList[i].motorType;
-      console.log('key',key);
+      const key =  this.equipmentList[i].objectDescription + this.equipmentList[i].motorType +
+        this.equipmentList[i].department['departmentcode'];
       if (this.mapEquipment[key]){
-        console.log('exists');
-        this.mapEquipment[key].push(this.equipmentList[i])
+        if (this.equipmentList[i].userStatus == 'I'){
+          this.mapEquipment[key].push(this.equipmentList[i]);
+        }
+
       } else{
+        if (this.equipmentList[i].userStatus == 'I')
         this.mapEquipment[key] = [this.equipmentList[i]];
       }
 
@@ -118,18 +116,11 @@ export class MechanicComponent implements OnInit {
 
     console.log('Map',this.mapEquipment);
 
+
+
+
+
   }
-  countFrequency(selectedEquipment:EquipmentModel){
-
-
-      for (let i = 0; i <this.equipmentList.length ; i++) {
-        if (this.equipmentList[i].objectDescription == selectedEquipment.objectDescription
-          && this.equipmentList[i].motorType == selectedEquipment.motorType){
-          this.equipmentService.frequency++;
-        }
-      }
-  }
-
 
   onSelectList(selectedEquipment: EquipmentModel){
     for (let i = 0; i < this.equipmentList.length; i++){
@@ -143,14 +134,14 @@ export class MechanicComponent implements OnInit {
         this.equipmentService.hangar = this.equipmentList[i].hangar;
         // @ts-ignore
         this.equipmentService.departmentModal = this.equipmentList[i].department.departmentcode;
-        this.countFrequency(selectedEquipment);
-        console.log(this.equipmentService.frequency);
+
+
 
       }
 
 
     }
-    console.log(this.equipmentService.equipmentNr);
+
     this.equipmentService.selectedEquipment = selectedEquipment;
     return selectedEquipment;
   }
@@ -165,8 +156,6 @@ export class MechanicComponent implements OnInit {
 
       if (x.objectDescription.includes(equip.toUpperCase())) {
         x.filterEquipDescription = true;
-        console.log(x.objectDescription.valueOf());
-        console.log(equip);
       }
     }
   }

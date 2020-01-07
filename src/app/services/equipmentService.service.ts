@@ -27,11 +27,6 @@ export class EquipmentService {
   }
 
 
-  getEquipmentList() {
-    return this._equipmentList;
-  }
-
-
   getAllEquipment() {
     return this.serverService.get<EquipmentModel[]>("http://localhost:8085/rest/equipment");
   }
@@ -41,12 +36,9 @@ export class EquipmentService {
   }
 
   updateUnqiueEquipment(repairedEquipment: EquipmentModel) {
-    this.serverService.put("http://localhost:8085/rest/equipment/" + repairedEquipment.equipmentNr,
-      repairedEquipment).subscribe(response => {
-      console.log(response);
-    });
-    alert("Equipment is marked as repaired");
-    window.location.reload()
+    alert("Equipment is marked as Repaired");
+    return this.serverService.put("http://localhost:8085/rest/equipment/" + repairedEquipment.equipmentNr,
+      repairedEquipment)
   }
 
   inUseUnqiueEquipment(useEquipment: EquipmentModel) {
