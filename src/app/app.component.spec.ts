@@ -17,7 +17,7 @@ import {RouterModule} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ModalModule} from "../_modal";
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -48,7 +48,7 @@ describe('AppComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         ModalModule,
-        HttpClientModule
+        HttpClientTestingModule
 
       ]
       ,

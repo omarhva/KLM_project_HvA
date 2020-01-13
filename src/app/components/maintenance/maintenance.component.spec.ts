@@ -19,10 +19,21 @@ import {AppRoutingModule} from "../../app-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ModalModule} from "../../../_modal";
 import {HttpClientModule} from "@angular/common/http";
+import * as firebase from "firebase";
 
 describe('MaintenanceComponent', () => {
   let component: MaintenanceComponent;
   let fixture: ComponentFixture<MaintenanceComponent>;
+  const firebaseConfig = {
+    apiKey: "AIzaSyCKMJ7IDDBPSJNT0FNasMNsDo-9w3QO5bI",
+    authDomain: "klmewa.firebaseapp.com",
+    databaseURL: "https://klmewa.firebaseio.com",
+    projectId: "klmewa",
+    storageBucket: "klmewa.appspot.com",
+    messagingSenderId: "876043107626",
+    appId: "1:876043107626:web:911d1567bbd57f43507253",
+    measurementId: "G-C9RGETWND2"
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -57,6 +68,10 @@ describe('MaintenanceComponent', () => {
   }));
 
   beforeEach(() => {
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
     fixture = TestBed.createComponent(MaintenanceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

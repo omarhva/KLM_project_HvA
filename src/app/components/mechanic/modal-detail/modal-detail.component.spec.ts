@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalDetailComponent } from './modal-detail.component';
-import {HttpClient, HttpHandler} from "@angular/common/http";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('ModalDetailComponent', () => {
   let component: ModalDetailComponent;
@@ -10,12 +10,17 @@ describe('ModalDetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ModalDetailComponent ],
-      providers:[HttpClient,HttpHandler]
+      imports:[HttpClientTestingModule]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [ ModalDetailComponent ],
+      imports:[HttpClientTestingModule]
+    })
+      .compileComponents();
     fixture = TestBed.createComponent(ModalDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -18,13 +18,22 @@ import {BrowserModule} from "@angular/platform-browser";
 import {AppRoutingModule} from "../../../app-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ModalModule} from "../../../../_modal";
-import {HttpClientModule} from "@angular/common/http";
-import {initializeApp} from "firebase";
 import * as firebase from "firebase";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('NavBarComponent', () => {
   let component: NavBarComponent;
   let fixture: ComponentFixture<NavBarComponent>;
+  const firebaseConfig = {
+    apiKey: "AIzaSyCKMJ7IDDBPSJNT0FNasMNsDo-9w3QO5bI",
+    authDomain: "klmewa.firebaseapp.com",
+    databaseURL: "https://klmewa.firebaseio.com",
+    projectId: "klmewa",
+    storageBucket: "klmewa.appspot.com",
+    messagingSenderId: "876043107626",
+    appId: "1:876043107626:web:911d1567bbd57f43507253",
+    measurementId: "G-C9RGETWND2"
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -54,7 +63,7 @@ describe('NavBarComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         ModalModule,
-        HttpClientModule
+        HttpClientTestingModule
 
       ]
     })
@@ -62,6 +71,9 @@ describe('NavBarComponent', () => {
   }));
 
   beforeEach(() => {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
     fixture = TestBed.createComponent(NavBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
