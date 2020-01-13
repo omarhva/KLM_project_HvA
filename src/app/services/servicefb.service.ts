@@ -7,6 +7,7 @@ import 'firebase/auth';
   providedIn: 'root'
 })
 export class ServicefbService {
+
   token: string = null;
 
   constructor(private route: Router) {
@@ -44,15 +45,6 @@ export class ServicefbService {
 
   refreshToken() {
     this.token = null;
-  }
-
-  isAuthenticated() {
-    return this.token != null;
-
-  }
-
-  isLoggedIn() {
-    return !!this.getToken();
   }
   logout() {
     firebase.auth().signOut();

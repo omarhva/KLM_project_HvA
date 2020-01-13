@@ -6,6 +6,7 @@ import {Motortypes} from "../mechanic/mock/mock-motortype";
 import {MotorT} from "../mechanic/mock/motortype";
 import {Dept} from "../mechanic/mock/department";
 import {Departments} from "../mechanic/mock/mock-departments";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-maintenance',

@@ -14,6 +14,10 @@ describe('FooterComponent', () => {
   }));
 
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [FooterComponent]
+    })
+      .compileComponents();
     fixture = TestBed.createComponent(FooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

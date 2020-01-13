@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalDetailComponent } from './modal-detail.component';
+import {HttpClient, HttpHandler} from "@angular/common/http";
 
 describe('ModalDetailComponent', () => {
   let component: ModalDetailComponent;
@@ -8,7 +9,8 @@ describe('ModalDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalDetailComponent ]
+      declarations: [ ModalDetailComponent ],
+      providers:[HttpClient,HttpHandler]
     })
     .compileComponents();
   }));
