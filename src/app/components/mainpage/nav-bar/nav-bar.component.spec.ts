@@ -20,6 +20,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ModalModule} from "../../../../_modal";
 import * as firebase from "firebase";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {ServicefbService} from "../../../services/servicefb.service";
 
 describe('NavBarComponent', () => {
   let component: NavBarComponent;
@@ -82,4 +83,28 @@ describe('NavBarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  //Didier Guyon
+  it('should be login in nav bar if not logged in', () => {
+    fixture.detectChanges();
+    let compiled = fixture.debugElement.nativeElement;
+    if (firebase.auth().currentUser == null){
+      expect(compiled.querySelector('a').textContent).toBe("Login");
+    } else{
+      expect(compiled.querySelector('a').textContent).toBe("Mechanic");
+    }
+
+  });
+  // Didier Guyon
+  it('should not be login in nav bar if logged in', () => {
+    let service = fixture.debugElement.injector.get(ServicefbService);
+
+    fixture.detectChanges();
+    let compiled = fixture.debugElement.nativeElement;
+    if (service.returncurrentUser() != null){
+      expect(compiled.querySelector('a').textContent).not.toBe("Login");
+    } else {
+      expect(compiled.querySelector('a').textContent).toBe("Login");
+    }
+  });
+
 });

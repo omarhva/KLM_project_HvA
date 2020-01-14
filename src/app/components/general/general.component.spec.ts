@@ -5,7 +5,6 @@ import {NgForm, ReactiveFormsModule} from "@angular/forms";
 import {ModalHomeGeneralComponent} from "./modal-home-general/modal-home-general.component";
 import {ModalModule} from "../../../_modal";
 import {ModalDetailGeneralComponent} from "./modal-detail-general/modal-detail-general.component";
-import {HttpClient, HttpHandler} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import * as firebase from "firebase";
@@ -53,4 +52,29 @@ describe('GeneralComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // Didier Guyon
+  it('should show Choose a department if logged in', () => {
+    firebase.auth().signInWithEmailAndPassword("dj@klm.nl","123456789");
+    let compiled = fixture.debugElement.nativeElement;
+    if (firebase.auth().currentUser != null){
+      expect(compiled.querySelector('h2').textContent).toContain("Choose a department");
+    } else{
+      expect(compiled.querySelector('p').textContent).toContain("Please login to access this list");
+    }
+
+  });
+
+  it('should show Choose a department if logged in', () => {
+    firebase.auth().signInWithEmailAndPassword("dj@klm.nl","123456789");
+    let compiled = fixture.debugElement.nativeElement;
+    if (firebase.auth().currentUser != null){
+      expect(compiled.querySelector('h2').textContent).toContain("Choose a department");
+    } else{
+      expect(compiled.querySelector('p').textContent).toContain("Please login to access this list");
+    }
+
+  });
+
+
 });

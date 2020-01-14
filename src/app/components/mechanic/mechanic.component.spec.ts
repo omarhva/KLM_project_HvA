@@ -55,7 +55,7 @@ describe('MechanicComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
+  // Didier Guyon
   it('should be Please login if not logged in', () => {
     fixture = TestBed.createComponent(MechanicComponent);
     let component = fixture.debugElement.componentInstance;
@@ -64,4 +64,5 @@ describe('MechanicComponent', () => {
     let compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('p').textContent).toBe("Please login to access this list");
   });
+
 });
