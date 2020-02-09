@@ -55,4 +55,13 @@ public class RepositoryJPA implements EquipmentRepository {
   public MotorType insert(MotorType motorType) {
     return em.merge(motorType);
   }
+
+  @Override
+  public Equipment deleteById(long id) {
+    Equipment equipment = em.find(Equipment.class, id);
+
+     em.remove(equipment);
+    return equipment;
+
+  }
 }

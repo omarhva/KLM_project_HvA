@@ -13,8 +13,7 @@ public class Location {
   private int number;
 
 
-  public Location() {
-  }
+  public Location() {}
 
 
   public String getLocationCode() {

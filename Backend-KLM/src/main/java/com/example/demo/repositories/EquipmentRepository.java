@@ -16,5 +16,6 @@ public interface EquipmentRepository {
   Equipment save(Equipment equipment);
 
   Equipment findById(long id);
+  Equipment deleteById(long id);
 
 }

@@ -1,4 +1,4 @@
-export class MotorT{
+export class MotorT {
   name: string;
 }
 

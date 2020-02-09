@@ -18,9 +18,9 @@ export class ServicefbService {
       .then(
         response => {
           this.route.navigate(['/mechanic']);
-          firebase.auth().currentUser.getIdToken()
+          firebase.auth().currentUser.getIdToken() // wait for the token so this is a promise
             .then(
-              (token: string) => this.token = token
+              (token: string) => this.token = token // sing the token in our token service
             );
         }
       )
@@ -56,6 +56,13 @@ export class ServicefbService {
   returncurrentUser() {
     return firebase.auth().currentUser;
   }
+  isLogged(): boolean {
+    if (
+      this.returncurrentUser() != null
+    ) {return true;
+    }else return false;
+  }
+
 
 
 }

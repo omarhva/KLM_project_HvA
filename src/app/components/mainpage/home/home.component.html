@@ -12,6 +12,7 @@
 <!--  </div>-->
 <!--</form>-->
 <form class="validationaform" (ngSubmit)="onSigIn(f)" #f="ngForm">
+  <h1 id = "title">Login page</h1>
 
   <div class="container">
     <label><b>Username</b></label>
@@ -20,7 +21,7 @@
     <label><b>Password</b></label>
     <input type="password" id="psw" ngModel name="psw" placeholder="Enter Password" required #psw="ngModel">
 
-    <button type="sumbit" [disabled]="!f.valid">Login</button>
+    <button id = "logbut" type="sumbit" [disabled]="!f.valid">Login</button>
 
     <span class="validationError" *ngIf="!psw.valid || !username.valid ">
       Write your credentials in the information fields please!</span>

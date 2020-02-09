@@ -20,6 +20,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ModalModule} from "../../../../_modal";
 import * as firebase from "firebase";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {auth} from "firebase";
 
 describe('NavBarComponent', () => {
   let component: NavBarComponent;
@@ -82,4 +83,26 @@ describe('NavBarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  /**
+   * Omar Mulla Ibrahim
+   * Student number: 500766035
+   */
+
+  // test 4 here i check if you logged in your email should be display on the navbar as well test 5 in Maintenance page
+    it('should desplay name if user loged in', () => {
+      firebase.auth().signInWithEmailAndPassword("omar@hva.nl","123456789");
+      let compiled = fixture.debugElement.nativeElement;
+      if (firebase.auth().currentUser != null){
+        expect(compiled.querySelector('#currentUser').textContent).toContain(component.auth.returncurrentUser().email); }
+  });
+    // test 5 i check if the navbar wil be correctly loaded test 6 in Maintenance page
+  it('should load navbar correctly', () => {
+    const navbar = fixture.debugElement.nativeElement.querySelector('#navbarId');
+    expect(navbar).toBeDefined();
+
+
+  });
+
 });
+

@@ -49,7 +49,7 @@ public class Equipment {
   private boolean filterLocation;
 
   @ManyToOne
-  @JsonManagedReference
+  @JsonManagedReference //used on a child reference
   @JsonView(DataView.DynamicFilter.class)
   public Department department;
 
@@ -61,6 +61,10 @@ public class Equipment {
 
   public Equipment() {
 
+  }
+
+  public MotorEnum getMotorType() {
+    return motorType;
   }
 
   public Equipment(int equipmentNr, String objectDescription, EquipmentEnum userStatus, String code, int priority,

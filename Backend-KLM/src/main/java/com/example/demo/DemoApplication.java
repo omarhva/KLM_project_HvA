@@ -1,5 +1,4 @@
 package com.example.demo;
-
 import com.example.demo.models.Department;
 import com.example.demo.models.Equipment;
 import com.example.demo.models.MotorType;

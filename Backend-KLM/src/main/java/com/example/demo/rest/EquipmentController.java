@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200") // from this adres spefied wi=hcih adres is alklwod to make the rwquest we make here
 
 public class EquipmentController {
 
@@ -49,7 +49,7 @@ public class EquipmentController {
     equipmentRepository.save(equipment1);
 
     return equipment1;
-  }
+}
 
   @PutMapping("/rest/equipment/inUse/{id}")
   public Equipment inUse(@PathVariable long id) {

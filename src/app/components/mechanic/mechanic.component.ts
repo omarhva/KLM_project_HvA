@@ -58,7 +58,7 @@ export class MechanicComponent implements OnInit {
     this.showTable = true;
     this.searchFieldEquipment = new FormControl();
     this.searchFieldLocation = new FormControl();
-    this.searchFieldEquipmentNr= new FormControl();
+    this.searchFieldEquipmentNr = new FormControl();
   }
 
 

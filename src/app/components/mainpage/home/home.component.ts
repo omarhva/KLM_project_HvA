@@ -25,6 +25,12 @@ export class HomeComponent implements OnInit {
 
 
   }
+  isLogged() {
+    if (
+      this.servicefbService.returncurrentUser() != null
+    ) {return true;
+    }
+  }
 
 
 }

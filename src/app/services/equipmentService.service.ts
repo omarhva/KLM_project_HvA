@@ -20,6 +20,7 @@ export class EquipmentService {
   public buildingModal;
   public hangar;
   public departmentModal;
+  public url:String = "http://localhost:8085/rest/";
 
 
   constructor(private serverService: HttpClient) {
@@ -32,13 +33,13 @@ export class EquipmentService {
   }
 
   getUnqiueEquipment() {
-    return this.serverService.get<EquipmentModel[]>("http://localhost:8085/rest/equipment/unique")
+    return this.serverService.get<EquipmentModel[]>("http://localhost:8085/rest/equipment/unique");
   }
 
   updateUnqiueEquipment(repairedEquipment: EquipmentModel) {
     alert("Equipment is marked as Repaired");
     return this.serverService.put("http://localhost:8085/rest/equipment/" + repairedEquipment.equipmentNr,
-      repairedEquipment)
+      repairedEquipment);
   }
 
   inUseUnqiueEquipment(useEquipment: EquipmentModel) {

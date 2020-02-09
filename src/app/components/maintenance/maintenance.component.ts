@@ -47,8 +47,8 @@ export class MaintenanceComponent implements OnInit {
   }
 
   updateUnqiueEquipment(repairedEquipment: EquipmentModel) {
-     this.equipmentService.updateUnqiueEquipment(repairedEquipment).subscribe(response =>{
-     })
+     this.equipmentService.updateUnqiueEquipment(repairedEquipment).subscribe(response => {
+     });
   }
 
 

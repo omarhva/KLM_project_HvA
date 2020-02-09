@@ -21,7 +21,7 @@ public class Department {
 
 
   @OneToMany(mappedBy = "department")
-  @JsonBackReference
+  @JsonBackReference // used on parent reference
   @JsonView(DataView.DynamicFilter.class)
   public List<Equipment> equipment = new ArrayList<>();
 

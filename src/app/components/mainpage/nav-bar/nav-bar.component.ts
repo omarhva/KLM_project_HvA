@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ServicefbService} from "../../../services/servicefb.service";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,7 +9,7 @@ import {ServicefbService} from "../../../services/servicefb.service";
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private auth: ServicefbService) {
+  constructor(public auth: ServicefbService) {
   }
 
   ngOnInit() {
@@ -18,4 +19,11 @@ export class NavBarComponent implements OnInit {
     document.getElementById('nav-general-tab').setAttribute('aria-selected', String(true));
     document.getElementById('nav-general-tab').setAttribute('class', 'nav-item');
   }
+  isLogged() {
+    if (
+      this.auth.returncurrentUser() != null
+    ) {return true;
+    }
+  }
+
 }
